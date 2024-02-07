@@ -2,6 +2,12 @@
 {
     public class Options
     {
-        public const string ConnectionString = "";
+        public static string ConStr
+        {
+            get
+            {
+                return Environment.GetEnvironmentVariable("conectionstring");
+            }
+        }
     }
 }
