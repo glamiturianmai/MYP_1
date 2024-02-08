@@ -9,6 +9,6 @@ namespace MYP_MassageSalon.DAL.StoredProcedures
     public class ClientsStoredProcedures
 
     {
-        public const string PPP = "PPP";
+        public const string GetAllClients = "GetAllClients";
     }
 }
