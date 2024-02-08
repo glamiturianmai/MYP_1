@@ -21,5 +21,14 @@ namespace MYP_MassageSalon.DAL
             }
         }
 
+        public void AddService_Appointment(Service_AppointmentDTO serviceappointment) //добавляем заявку по услуге 
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                connection.Query(AppointmentStoredProcedures.AddService_Appointment,
+                    new { serviceappointment.ServicesId, serviceappointment.AppointmentId, serviceappointment.WorkerId, serviceappointment.Price },
+                    commandType: CommandType.StoredProcedure); //тип подключения ??
+            }
+        }
     }
 }
