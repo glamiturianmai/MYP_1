@@ -22,6 +22,21 @@ namespace MYP_MassageSalon.DAL
                     commandType: CommandType.StoredProcedure); 
             }
         }
+
+
+
+        public void SetService(ServicesDTO service) //добавляем услугу по имя цена время 
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                connection.Query(ServiceStoredProcedures.SetService,
+                    new { service.Name, service.Cost, service.Time},
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
+
+
+
         //тут явно не все ок 
         public List<ServicesDTO> GetAllServicesName() //не одна табличка -  выводим все услуги это связь многие ко многим мы НЕ ЗНАЕМ что это такое 
         {
