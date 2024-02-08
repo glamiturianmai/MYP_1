@@ -22,5 +22,25 @@ namespace MYP_MassageSalon.DAL
                     commandType: CommandType.StoredProcedure); 
             }
         }
+        //тут явно не все ок 
+        public List<ServicesDTO> GetAllServicesName() //не одна табличка -  выводим все услуги это связь многие ко многим мы НЕ ЗНАЕМ что это такое 
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                return connection.Query<ServicesDTO, Services_TypeDTO, TypeDTO, ServicesDTO>(
+                    ServiceStoredProcedures.GetAllServicesName,
+                    (service, serviceType, type) =>
+                    {
+                        service.ServiceType = serviceType;
+                        type.ServiceType = serviceType;
+                        return service;
+                    },
+                    splitOn: "id",
+                    commandType: CommandType.StoredProcedure
+                    ).ToList();
+            }
+        }
     }
+
+    
 }

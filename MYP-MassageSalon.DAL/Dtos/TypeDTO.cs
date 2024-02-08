@@ -13,6 +13,6 @@ namespace MYP_MassageSalon.DAL.Dtos
 
         public string Name { get; set; }
 
-       
+        public Services_TypeDTO ServiceType { get; set; }
     }
 }

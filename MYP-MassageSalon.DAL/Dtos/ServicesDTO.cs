@@ -16,7 +16,9 @@ namespace MYP_MassageSalon.DAL.Dtos
 
         public bool IsDeleted { get; set; }
 
-       
-       
+        public Services_TypeDTO ServiceType { get; set; }
+
+
+
     }
 }
