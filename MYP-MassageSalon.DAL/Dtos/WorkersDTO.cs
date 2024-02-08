@@ -17,6 +17,8 @@ namespace MYP_MassageSalon.DAL.Dtos
         public bool IsDeleted { get; set; }
 
         public int? WorkIntervalId { get; set; }
+
+        public QualificationDTO QualificationWorker { get; set; }
     }
 }
    
