@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MYP_MassageSalon.DAL", "MYP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test", "test\test.csproj", "{02F4EFEC-FB2B-4C9A-8E92-580DE85284BD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{303A77F0-76A8-428C-95C3-092FD207B882}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{02F4EFEC-FB2B-4C9A-8E92-580DE85284BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{02F4EFEC-FB2B-4C9A-8E92-580DE85284BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{02F4EFEC-FB2B-4C9A-8E92-580DE85284BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{303A77F0-76A8-428C-95C3-092FD207B882}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{303A77F0-76A8-428C-95C3-092FD207B882}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{303A77F0-76A8-428C-95C3-092FD207B882}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{303A77F0-76A8-428C-95C3-092FD207B882}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

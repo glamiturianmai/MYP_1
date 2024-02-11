@@ -14,7 +14,7 @@ namespace MYP_MassageSalon.DAL.Dtos
         public decimal Cost { get; set; }
 
 
-        public DateTime Time { get; set; }
+        public int Time { get; set; }
 
         
 

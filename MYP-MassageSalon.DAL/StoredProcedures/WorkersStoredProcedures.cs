@@ -9,5 +9,7 @@ namespace MYP_MassageSalon.DAL.StoredProcedures
     public class WorkersStoredProcedures
     {
         public const string GetQualificationWorker = "GetQualificationWorker";
+
+        public const string GetWorkerAppointments = "GetWorkerAppointments";
     }
 }
