@@ -8,6 +8,7 @@ namespace MYP_MassageSalon.DAL.Dtos
 {
     public class WorkersDTO
     {
+        
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -17,6 +18,10 @@ namespace MYP_MassageSalon.DAL.Dtos
         public bool IsDeleted { get; set; }
 
         public int? WorkIntervalId { get; set; }
+
+        public QualificationDTO? QualificationWorker { get; set; }
+        public WorkerAppointmentsDTO? Appointments { get; set; }
+    
     }
 }
    

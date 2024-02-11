@@ -13,11 +13,11 @@ namespace MYP_MassageSalon.DAL
 {
     public class ClientRepository : IClientsRepositories
     {
-        public List<ClientsDTO> PPP()
+        public List<ClientsDTO> GetAllClients()
         {
-            using (IDbConnection connection = new SqlConnection(Options.ConnectionString))
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
             {
-                return connection.Query<ClientsDto>(ClientsStoredProcedures.PPP).ToList();
+                return connection.Query<ClientsDTO>(ClientsStoredProcedures.GetAllClients).ToList();
             }
         }
     }
