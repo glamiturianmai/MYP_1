@@ -11,7 +11,7 @@ using System.Data;
 
 namespace MYP_MassageSalon.DAL
 {
-    public class ServiceRepository: IServiceRepository
+    public class ServiceRepository : IServiceRepository
     {
         public void DeleteService(ServicesDTO service) //удаляем услугу по id
         {
@@ -50,7 +50,7 @@ namespace MYP_MassageSalon.DAL
                         type.ServiceType = serviceType;
                         return service;
                     },
-                    splitOn: "id",
+                    splitOn: "TypeId",
                     commandType: CommandType.StoredProcedure
                     ).ToList();
             }
