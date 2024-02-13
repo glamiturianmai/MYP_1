@@ -42,12 +42,11 @@ namespace MYP_MassageSalon.DAL
         {
             using (IDbConnection connection = new SqlConnection(Options.ConStr))
             {
-                return connection.Query<ServicesDTO, Services_TypeDTO, TypeDTO, ServicesDTO>(
+                return connection.Query<ServicesDTO, ServTypePrDTO, ServicesDTO>(
                     ServiceStoredProcedures.GetAllServicesName,
-                    (service, serviceType, type) =>
+                    (service, servtype) =>
                     {
-                        service.ServiceType = serviceType;
-                        type.ServiceType = serviceType;
+                        service.ServType.Add(servtype);
                         return service;
                     },
                     splitOn: "TypeId",
