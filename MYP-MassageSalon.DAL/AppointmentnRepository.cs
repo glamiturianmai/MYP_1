@@ -5,6 +5,7 @@ using MYP_MassageSalon.DAL.StoredProcedures;
 using Dapper;
 using Microsoft.Data.SqlClient;
 using System.Data;
+using MYP_MassageSalon.DAL;
 
 
 namespace MYP_MassageSalon.DAL
@@ -30,5 +31,35 @@ namespace MYP_MassageSalon.DAL
                     commandType: CommandType.StoredProcedure); //тип подключения ??
             }
         }
+
+        public void DeleteAppointment(AppointmentDTO app) //удаляем заявку по id
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                connection.Query(AppointmentStoredProcedures.DeleteAppointment,
+                    new { app.Id },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public List<WorkersDTO> GetAllAppointments() //заявки    
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                return connection.Query<WorkersDTO, WorkerAppointmentsDTO, WorkersDTO>(
+                    AppointmentStoredProcedures.GetAllAppointments,
+                    (worker, workerappointment) =>
+                    {
+                        worker.Appointments.Add(workerappointment);
+                        return worker;
+
+                    },
+                    
+                    splitOn: "Id,IntervalId",
+                    commandType: CommandType.StoredProcedure
+                    ).ToList();
+            }
+        }
     }
 }
+

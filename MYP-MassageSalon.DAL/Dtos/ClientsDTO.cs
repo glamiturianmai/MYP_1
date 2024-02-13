@@ -12,7 +12,7 @@ namespace MYP_MassageSalon.DAL.Dtos
 
         public string Username { get; set; }
 
-        public int? IpInf { get; set; }
+        public int? IPInf { get; set; }
 
         public bool IsDeleted { get; set; }
     }

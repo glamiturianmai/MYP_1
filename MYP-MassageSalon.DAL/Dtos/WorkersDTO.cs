@@ -8,7 +8,10 @@ namespace MYP_MassageSalon.DAL.Dtos
 {
     public class WorkersDTO
     {
-        
+        public WorkersDTO()
+        {
+            ServiceWork = new List<WorkersServiceDTO>();
+        }
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -20,8 +23,10 @@ namespace MYP_MassageSalon.DAL.Dtos
         public int? WorkIntervalId { get; set; }
 
         public QualificationDTO? QualificationWorker { get; set; }
-        public WorkerAppointmentsDTO? Appointments { get; set; }
-    
+        public List<WorkerAppointmentsDTO>? Appointments { get; set; }
+
+        public List<WorkersServiceDTO>? ServiceWork { get; set; }
+       
     }
 }
    
