@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace MYP_MassageSalon.DAL.StoredProcedures
 {
-    public class ClientsStoredProcedures
-
+    public class ScheduleIntervalStoredProcedures
     {
-        public const string GetAllClients = "GetAllClients";
-        public const string GetClientsAppointments = "GetClientsAppointments";
+        public const string SetScheduleInterval = "SetScheduleInterval";
     }
 }

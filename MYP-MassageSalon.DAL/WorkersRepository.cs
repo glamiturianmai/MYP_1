@@ -9,6 +9,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MYP_MassageSalon.DAL
 {
@@ -43,76 +44,41 @@ namespace MYP_MassageSalon.DAL
             {
                 var parametrs = new
                 {
-                    WorkerId = Id1
+                    Id = Id1
                 };
-                return connection.Query<WorkersDTO, WorkerAppointmentsDTO, WorkersDTO>(
+                return connection.Query<WorkersDTO, WorkAppPrDTO, WorkersDTO>(
                     WorkersStoredProcedures.GetWorkerAppointments,
-                    (worker, workerappointment) =>
+                    (worker, workapp) =>
                     {
-                        worker.Appointments.Add(workerappointment);
+                        worker.WorksAppDAte.Add(workapp);
                         return worker;
-                        
                     },
                     parametrs,
-                    splitOn: "Id,IntervalId",
+                    splitOn: "IntervalId",
                     commandType: CommandType.StoredProcedure
                     ).ToList();
             }
         }
 
-        public void DeleteWorker(WorkersDTO work) //удаляем сотрудника по id
-        {
-            using (IDbConnection connection = new SqlConnection(Options.ConStr))
-            {
-                connection.Query(WorkersStoredProcedures.DeleteWorker,
-                    new { work.Id },
-                    commandType: CommandType.StoredProcedure);
-            }
-        }
 
-
-        public void AddNewWorker(WorkersDTO worker) //добавляем работника по ИМЕНИ КВАЛИФИКАЦИИ(ID) по услуге 
-        {
-            using (IDbConnection connection = new SqlConnection(Options.ConStr))
-            {
-                connection.Query(WorkersStoredProcedures.AddNewWorker,
-                    new { worker.Name, worker.QualificationId},
-                    commandType: CommandType.StoredProcedure); //тип подключения ??
-            }
-        }
-
-
-        public void SetWorkerQualification(WorkersDTO work) //изменить квалификацию мастера  
-        {
-            using (IDbConnection connection = new SqlConnection(Options.ConStr))
-            {
-                connection.Query(WorkersStoredProcedures.SetWorkerQualification,
-                    new { work.Id, work.QualificationId},
-                    commandType: CommandType.StoredProcedure);
-            }
-        }
-
-
-
-        public List<WorkersDTO> GetWorkersByServiceId(int Id1) 
+        public List<WorkersDTO> GetWorkerAppointmentsForDate(int Id1, DateTime Date1) //заявки id мастера - много табличек   
         {
             using (IDbConnection connection = new SqlConnection(Options.ConStr))
             {
                 var parametrs = new
                 {
-                    Id = Id1
+                    Id = Id1,
+                    Date= Date1
                 };
-                return connection.Query<WorkersDTO, WorkersServiceDTO, WorkersDTO>(
-                    WorkersStoredProcedures.GetWorkersByServiceId,
-                    (worker, workerservice) =>
+                return connection.Query<WorkersDTO, WorkAppDatePrDTO, WorkersDTO>(
+                    WorkersStoredProcedures.GetWorkerAppointmentsForDate,
+                    (worker, workapp) =>
                     {
-
-                        worker.ServiceWork.Add(workerservice);
+                        worker.WAD.Add(workapp);
                         return worker;
-
                     },
                     parametrs,
-                    splitOn: "QualificationName",
+                    splitOn: "Date",
                     commandType: CommandType.StoredProcedure
                     ).ToList();
             }

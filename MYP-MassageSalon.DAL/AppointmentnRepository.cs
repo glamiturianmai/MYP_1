@@ -48,14 +48,14 @@ namespace MYP_MassageSalon.DAL
             {
                 return connection.Query<WorkersDTO, WorkerAppointmentsDTO, WorkersDTO>(
                     AppointmentStoredProcedures.GetAllAppointments,
-                    (worker, workerappointment) =>
+                    (worker, workapp) =>
                     {
-                        worker.Appointments.Add(workerappointment);
+                        worker.WorksApp.Add(workapp);
                         return worker;
 
                     },
                     
-                    splitOn: "Id,IntervalId",
+                    splitOn: "Date",
                     commandType: CommandType.StoredProcedure
                     ).ToList();
             }
