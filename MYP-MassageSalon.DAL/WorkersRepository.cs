@@ -13,7 +13,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MYP_MassageSalon.DAL
 {
-    public class WorkersRepository: IWorkersRepository
+    public class WorkersRepository : IWorkersRepository
     {
         public List<WorkersDTO> GetQualificationWorker(int Id1) //квалификация по id мастера - 2 таблички  
         {
@@ -21,7 +21,7 @@ namespace MYP_MassageSalon.DAL
             {
                 var parametrs = new
                 {
-                    WorkerId=Id1
+                    WorkerId = Id1
                 };
                 return connection.Query<WorkersDTO, QualificationDTO, WorkersDTO>(
                     WorkersStoredProcedures.GetQualificationWorker,
@@ -68,7 +68,7 @@ namespace MYP_MassageSalon.DAL
                 var parametrs = new
                 {
                     Id = Id1,
-                    Date= Date1
+                    Date = Date1
                 };
                 return connection.Query<WorkersDTO, WorkAppDatePrDTO, WorkersDTO>(
                     WorkersStoredProcedures.GetWorkerAppointmentsForDate,
@@ -82,6 +82,30 @@ namespace MYP_MassageSalon.DAL
                     commandType: CommandType.StoredProcedure
                     ).ToList();
             }
+        }
+
+        public List<WorkersDTO> GetWorkersIntervalsForDate(int Id1, DateTime Date1) //заявки id мастера - много табличек   
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                var parametrs = new
+                {
+                    WorkerId = Id1,
+                    Date = Date1
+                };
+                return connection.Query<WorkersDTO, IntervalWorkPrDTO, WorkersDTO>(
+                    WorkersStoredProcedures.GetWorkersIntervalsForDate,
+                    (worker, workinterv) =>
+                    {
+                        worker.WorkIntervals.Add(workinterv);
+                        return worker;
+                    },
+                    parametrs,
+                    splitOn: "IntervalId",
+                    commandType: CommandType.StoredProcedure
+                    ).ToList();
+            }
+
         }
     }
 }

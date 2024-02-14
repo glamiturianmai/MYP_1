@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "test", "test\test.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{303A77F0-76A8-428C-95C3-092FD207B882}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MYP_MassageSalon.BLL", "MYP_MassageSalon.BLL\MYP_MassageSalon.BLL.csproj", "{C60A88DB-9660-445C-B8AC-42DBF2CBB555}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MYP_MassageSalon.BLL", "MYP_MassageSalon.BLL\MYP_MassageSalon.BLL.csproj", "{C60A88DB-9660-445C-B8AC-42DBF2CBB555}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{0B6705F4-9A24-4884-A22B-845D46A43600}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{0B6705F4-9A24-4884-A22B-845D46A43600}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

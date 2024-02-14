@@ -203,17 +203,18 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 ////GetWorkerAppointments
 //WorkersRepository workRepository = new WorkersRepository();
-DateTime date1 = new DateTime(2023, 02, 14, 10, 54, 00); // год - месяц - день - час - минута - секунда
+DateTime date1 = new DateTime(2024, 02, 14, 10, 54, 00); // год - месяц - день - час - минута - секунда
 //var s = workRepository.GetWorkerAppointmentsForDate(2, date1);
-IntervalPrDTO addservdto = new IntervalPrDTO()
+IntervalWorkPrDTO addservdto = new IntervalWorkPrDTO()
 {
-    Date = date1,
     WorkerId = 4,
+    Date = date1,
+    
 
 };
-ScheduleIntervalRepository repository = new ScheduleIntervalRepository();
+WorkersRepository repository = new WorkersRepository();
 
-repository.SetScheduleInterval(addservdto);
+var w = repository.GetWorkersIntervalsForDate(4, date1);
 
 Console.ReadLine();
 

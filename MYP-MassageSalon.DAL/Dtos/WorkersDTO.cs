@@ -14,6 +14,7 @@ namespace MYP_MassageSalon.DAL.Dtos
             WorksApp = new List<WorkerAppointmentsDTO>();
             WorksAppDAte = new List<WorkAppPrDTO>();
             WAD = new List<WorkAppDatePrDTO>();
+            WorkIntervals = new List<IntervalWorkPrDTO>();
         }
 
         
@@ -35,6 +36,8 @@ namespace MYP_MassageSalon.DAL.Dtos
 
         public List<WorkAppPrDTO>? WorksAppDAte { get; set; }
         public List<WorkAppDatePrDTO>? WAD { get; set; }
+
+        public List<IntervalWorkPrDTO>? WorkIntervals { get; set; }
     }
 }
    
