@@ -10,6 +10,8 @@ namespace MYP_MassageSalon.DAL.StoredProcedures
     {
         public const string AddAppointment = "AddAppointment1";
         public const string AddService_Appointment = "AddAppointment2";
-        
+        public const string DeleteAppointment = "DeleteAppointment";
+        public const string GetAllAppointments = "GetAllAppointments";
     }
+   
 }

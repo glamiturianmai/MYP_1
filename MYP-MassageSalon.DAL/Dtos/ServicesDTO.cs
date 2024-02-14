@@ -8,6 +8,10 @@ namespace MYP_MassageSalon.DAL.Dtos
 {
     public class ServicesDTO
     {
+        public ServicesDTO()
+        {
+            ServType = new List<ServTypePrDTO>();
+        }
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -22,7 +26,7 @@ namespace MYP_MassageSalon.DAL.Dtos
 
         public Services_TypeDTO? ServiceType { get; set; }
 
-
+        public List<ServTypePrDTO>? ServType { get; set; }
 
     }
 }

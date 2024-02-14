@@ -11,5 +11,13 @@ namespace MYP_MassageSalon.DAL.StoredProcedures
         public const string GetQualificationWorker = "GetQualificationWorker";
 
         public const string GetWorkerAppointments = "GetWorkerAppointments";
+        public const string GetWorkerAppointmentsForDate = "GetWorkerAppointmentsForDate";
+        public const string DeleteWorker = "DeleteWorker";
+        public const string AddNewWorker = "AddNewWorker";
+        public const string SetWorkerQualification = "SetWorkerQualification";
+        public const string GetWorkersByServiceId = "GetWorkersByServiceId";
+        public const string GetWorkersIntervalsForDate = "GetWorkersIntervalsForDate";
+
     }
 }
+

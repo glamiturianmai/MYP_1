@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace MYP_MassageSalon.DAL.Dtos
 {
-    public class WorkerAppointmentsDTO 
+    public class WorkAppDatePrDTO
     {
-        public DateTime Date { get; set; } 
+        
+        public DateTime Date { get; set; }
 
-        public string Username { get; set; } 
-
-        public int IpInf { get; set; } 
+        public string Username { get; set; }
+        public int IpInf { get; set; }
         public string ServiceName { get; set; }
     }
 }

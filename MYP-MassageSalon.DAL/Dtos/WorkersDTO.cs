@@ -8,7 +8,17 @@ namespace MYP_MassageSalon.DAL.Dtos
 {
     public class WorkersDTO
     {
+        public WorkersDTO()
+        {
+            ServiceWork = new List<WorkersServiceDTO>();
+            WorksApp = new List<WorkerAppointmentsDTO>();
+            WorksAppDAte = new List<WorkAppPrDTO>();
+            WAD = new List<WorkAppDatePrDTO>();
+            WorkIntervals = new List<IntervalWorkPrDTO>();
+        }
+
         
+
         public int Id { get; set; }
 
         public string Name { get; set; }
@@ -20,8 +30,14 @@ namespace MYP_MassageSalon.DAL.Dtos
         public int? WorkIntervalId { get; set; }
 
         public QualificationDTO? QualificationWorker { get; set; }
-        public WorkerAppointmentsDTO? Appointments { get; set; }
-    
+        public List<WorkerAppointmentsDTO>? WorksApp { get; set; }
+
+        public List<WorkersServiceDTO>? ServiceWork { get; set; }
+
+        public List<WorkAppPrDTO>? WorksAppDAte { get; set; }
+        public List<WorkAppDatePrDTO>? WAD { get; set; }
+
+        public List<IntervalWorkPrDTO>? WorkIntervals { get; set; }
     }
 }
    
