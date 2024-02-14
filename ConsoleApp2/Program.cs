@@ -20,6 +20,8 @@ namespace ConsoleApp2
 
 
             ClientClient clientClient = new ClientClient();
+            ClientRepository rep = new ClientRepository();
+            var q = rep.GetAllClients();
             var c = clientClient.GetAllClientsMap();
 
             Console.WriteLine(c[2].IPInf);
