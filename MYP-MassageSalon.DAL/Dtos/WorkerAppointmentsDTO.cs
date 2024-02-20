@@ -10,7 +10,7 @@ namespace MYP_MassageSalon.DAL.Dtos
     {
         public DateTime Date { get; set; } 
 
-        public string Username { get; set; } 
+        public string Username { get; set; } //клиента
 
         public int IpInf { get; set; } 
         public string ServiceName { get; set; }
