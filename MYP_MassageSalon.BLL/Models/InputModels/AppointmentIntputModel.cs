@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AutoMapper;
 
-namespace MYP_MassageSalon.BLL
+namespace MYP_MassageSalon.BLL.Models.InputModels
 {
-    public class Client
+    public class AppointmentIntputModel
     {
+        public int ClientId { get; set; }
     }
 }
