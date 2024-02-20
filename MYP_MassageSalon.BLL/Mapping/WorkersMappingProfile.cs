@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 
 namespace MYP_MassageSalon.BLL.Mapping
 {
-    public class ServiceMappingProfile : Profile
+    public class WorkersMappingProfile : Profile
     {
-        public ServiceMappingProfile()
+        public WorkersMappingProfile()
         {
-            CreateMap<ServicesDTO, ServiceOutputModel>();  
-            CreateMap<Services_TypeDTO, ServiceTypeOutputModel>();
+            CreateMap<WorkersDTO, WorkersOutputModel>();
+            CreateMap<QualificationDTO, QualificationWorkersOutputModel>();
 
         }
     }

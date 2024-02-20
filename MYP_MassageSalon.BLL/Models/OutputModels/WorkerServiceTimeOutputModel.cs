@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AutoMapper;
 
-namespace MYP_MassageSalon.BLL
+namespace MYP_MassageSalon.BLL.Models.OutputModels
 {
-    public class Client
+    internal class WorkerServiceTimeOutputModel
     {
     }
 }
