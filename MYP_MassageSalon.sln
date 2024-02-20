@@ -5,13 +5,9 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MYP_MassageSalon.DAL", "MYP-MassageSalon.DAL\MYP_MassageSalon.DAL.csproj", "{31E97ABF-0769-49C4-8E86-EE57BC1F6C69}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "test", "test\test.csproj", "{02F4EFEC-FB2B-4C9A-8E92-580DE85284BD}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MYP_MassageSalon.BLL", "MYP_MassageSalon.BLL\MYP_MassageSalon.BLL.csproj", "{C60A88DB-9660-445C-B8AC-42DBF2CBB555}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{0B6705F4-9A24-4884-A22B-845D46A43600}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MYP_MassageSalon.TG", "MYP_MassageSalon.TG\MYP_MassageSalon.TG.csproj", "{F566CDF3-6292-4061-AE28-BD901F22A56F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MYP_MassageSalon.TG", "MYP_MassageSalon.TG\MYP_MassageSalon.TG.csproj", "{F566CDF3-6292-4061-AE28-BD901F22A56F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,18 +19,10 @@ Global
 		{31E97ABF-0769-49C4-8E86-EE57BC1F6C69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31E97ABF-0769-49C4-8E86-EE57BC1F6C69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31E97ABF-0769-49C4-8E86-EE57BC1F6C69}.Release|Any CPU.Build.0 = Release|Any CPU
-		{02F4EFEC-FB2B-4C9A-8E92-580DE85284BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{02F4EFEC-FB2B-4C9A-8E92-580DE85284BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{02F4EFEC-FB2B-4C9A-8E92-580DE85284BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{02F4EFEC-FB2B-4C9A-8E92-580DE85284BD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C60A88DB-9660-445C-B8AC-42DBF2CBB555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C60A88DB-9660-445C-B8AC-42DBF2CBB555}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C60A88DB-9660-445C-B8AC-42DBF2CBB555}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C60A88DB-9660-445C-B8AC-42DBF2CBB555}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B6705F4-9A24-4884-A22B-845D46A43600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B6705F4-9A24-4884-A22B-845D46A43600}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B6705F4-9A24-4884-A22B-845D46A43600}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B6705F4-9A24-4884-A22B-845D46A43600}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F566CDF3-6292-4061-AE28-BD901F22A56F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F566CDF3-6292-4061-AE28-BD901F22A56F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F566CDF3-6292-4061-AE28-BD901F22A56F}.Release|Any CPU.ActiveCfg = Release|Any CPU
