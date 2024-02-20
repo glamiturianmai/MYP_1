@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MYP_MassageSalon.BLL", "MYP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{0B6705F4-9A24-4884-A22B-845D46A43600}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MYP_MassageSalon.UI", "MYP_MassageSalon.UI\MYP_MassageSalon.UI.csproj", "{1D5D3B31-C7EC-4C90-A67C-DD1D2D5C4E97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MYP_MassageSalon.UITG", "MYP_MassageSalon.UITG\MYP_MassageSalon.UITG.csproj", "{F9B36C90-1AEF-4978-BA88-D93F2C3241EE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{0B6705F4-9A24-4884-A22B-845D46A43600}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B6705F4-9A24-4884-A22B-845D46A43600}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B6705F4-9A24-4884-A22B-845D46A43600}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D5D3B31-C7EC-4C90-A67C-DD1D2D5C4E97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D5D3B31-C7EC-4C90-A67C-DD1D2D5C4E97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D5D3B31-C7EC-4C90-A67C-DD1D2D5C4E97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D5D3B31-C7EC-4C90-A67C-DD1D2D5C4E97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9B36C90-1AEF-4978-BA88-D93F2C3241EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9B36C90-1AEF-4978-BA88-D93F2C3241EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9B36C90-1AEF-4978-BA88-D93F2C3241EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9B36C90-1AEF-4978-BA88-D93F2C3241EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
