@@ -8,6 +8,7 @@ namespace MYP_MassageSalon.BLL.Models.OutputModels
 {
     public class ClientOutputModel
     {
+        public int Name { get; set; }
         public int IPInf { get; set; }
     }
 }

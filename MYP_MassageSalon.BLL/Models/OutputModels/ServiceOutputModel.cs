@@ -8,7 +8,7 @@ namespace MYP_MassageSalon.BLL.Models.OutputModels
 {
     public class ServiceOutputModel
     {
-        
+        public int Id { get; set; }
 
         public string Name { get; set; }
         
