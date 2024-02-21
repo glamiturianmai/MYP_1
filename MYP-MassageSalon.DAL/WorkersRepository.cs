@@ -132,5 +132,26 @@ namespace MYP_MassageSalon.DAL
                     ).ToList();
             }
         }
+
+            public List<WorkersDTO> GetALLQualificationWorkers(int Id1)
+            {
+                using (IDbConnection connection = new SqlConnection(Options.ConStr))
+                {
+
+                    return connection.Query<WorkersDTO, WorkersServiceDTO, WorkersDTO>(
+                        WorkersStoredProcedures.GetALLQualificationWorkers,
+                        (worker, workerservice) =>
+                        {
+
+                            worker.ServiceWork.Add(workerservice);
+                            return worker;
+
+                        },
+
+                        splitOn: "QualificationName",
+                        commandType: CommandType.StoredProcedure
+                        ).ToList();
+                }
+            }
     }
 }

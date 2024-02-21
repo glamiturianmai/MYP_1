@@ -28,7 +28,7 @@ namespace MYP_MassageSalon.BLL
 
         public List<WorkersOutputModel> GetWorkersByServiceIdMap(int id1)
         {
-            List<WorkersDTO> workDtos = _workRepository.;
+            List<WorkersDTO> workDtos = _workRepository.GetWorkersByServiceId(id1);
 
             var result = _mapper.Map<List<WorkersOutputModel>>(workDtos); //преобразуй список dto в список моделек 
 

@@ -21,6 +21,27 @@ namespace MYP_MassageSalon.DAL
             }
         }
 
+
+
+
+        public List<QualificationDTO> GetALLQualification()
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                return connection.Query<QualificationDTO>(ClientsStoredProcedures.GetALLQualification).ToList();
+            }
+        }
+
+        public List<TypeDTO> GetALLType()
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                return connection.Query<TypeDTO>(ClientsStoredProcedures.GetALLType).ToList();
+            }
+        }
+
+
+
         public List<ClientsDTO> GetClientsAppointments(int Id1) //заявки id мастера - много табличек   
         {
             using (IDbConnection connection = new SqlConnection(Options.ConStr))
