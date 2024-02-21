@@ -35,13 +35,15 @@ namespace MYP_MassageSalon.BLL
             return result;
         }
 
-        //public List<ClientOutputModel> AddAppointmentMap()
-        //{
-        //    List<AppointmentDTO> appDtos = _appRepository.AddAppointment(appDtos);
+        public List<AppointmentsAdminOutputModel> GetAllAppointmentsAdminMap()
+        {
+            List<WorkersDTO> appDtos = _appRepository.GetAllAppointments();
 
-        //    var result = _mapper.Map<List<ClientOutputModel>>(appDtos); 
+            var result = _mapper.Map<List<AppointmentsAdminOutputModel>>(appDtos);
 
-        //    return result;
-        //}
+            return result;
+        }
+
+
     }
 }
