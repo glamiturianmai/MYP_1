@@ -8,7 +8,7 @@ namespace MYP_MassageSalon.TG
 {
     public class Options
     {
-        public static string ConStr
+        public static string ConStrTG
         {
             get
             {

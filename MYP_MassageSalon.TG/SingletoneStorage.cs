@@ -16,7 +16,7 @@ namespace MYP_MassageSalon.TG
         public Dictionary<long, AbstractState> Clients { get; private set; }
 
         private SingletoneStorage() {
-            Client = new TelegramBotClient(Options.ConStr);
+            Client = new TelegramBotClient(Options.ConStrTG);
 
             Clients = new Dictionary<long, AbstractState>();   
         }
