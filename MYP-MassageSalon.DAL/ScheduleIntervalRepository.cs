@@ -24,5 +24,13 @@ namespace MYP_MassageSalon.DAL
                     commandType: CommandType.StoredProcedure);
             }
         }
+
+        public List<QualificationDTO> GetScheduleIntervalsForWorkers()
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                return connection.Query<QualificationDTO>(ClientsStoredProcedures.GetALLQualification).ToList();
+            }
+        }
     }
 }

@@ -9,6 +9,8 @@ namespace MYP_MassageSalon.BLL.Models.InputModels
     public class WorkersModel
 
     {
-        //aaa
+        public string Name { get; set; }
+        public string Qualification { get; set; }
+
     }
 }
