@@ -23,7 +23,8 @@ namespace MYP_MassageSalon.TG.States
         public override AbstractState ReceiveMessage(Update update)
         {
             if (update.Type == UpdateType.Message)
-            {
+            { 
+                //TODO: добавить проверку на наличие клиента в базе
                 _clients.AddClient(update.Message.Chat.Id, update.Message.Text);
                 return this;
             }
