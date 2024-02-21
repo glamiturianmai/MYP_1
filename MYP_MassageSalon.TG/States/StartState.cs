@@ -53,7 +53,11 @@ namespace MYP_MassageSalon.TG.States
                     {
                         new InlineKeyboardButton[]
                         {
-                            new InlineKeyboardButton("Посмотреть свои записи") {CallbackData="SeeApps"},
+                            new InlineKeyboardButton("Посмотреть свои записи") {CallbackData="SeeApps"}
+                            
+                        },
+                        new InlineKeyboardButton[]
+                        {
                             new InlineKeyboardButton("Записаться") {CallbackData="SetApp"}
                         }
                     }
