@@ -1,7 +1,7 @@
 ﻿using MYP_MassageSalon.DAL.Dtos;
 using MYP_MassageSalon.DAL;
 
-WorkersRepository workRep = new WorkersRepository();
-var a = workRep.GetWorkersByServiceId(2);
+ServiceRepository workRep = new ServiceRepository();
+List<ServicesDTO> a = workRep.GetAllServicesName();
 
 Console.ReadLine();

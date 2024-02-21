@@ -13,8 +13,6 @@ namespace MYP_MassageSalon.DAL.Dtos
 
         public DateTime Date { get; set; }
 
-        public DateTime TimeStart { get; set; }
-
         public int WorkerId { get; set; }
 
         public int AppointmentId { get; set; }

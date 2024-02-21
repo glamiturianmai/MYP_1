@@ -28,7 +28,7 @@ namespace MYP_MassageSalon.DAL
             {
                 connection.Query(AppointmentStoredProcedures.AddService_Appointment,
                     new { serviceappointment.ServicesId, serviceappointment.AppointmentId, serviceappointment.WorkerId, serviceappointment.Price },
-                    commandType: CommandType.StoredProcedure); //тип подключения ??
+                    commandType: CommandType.StoredProcedure); 
             }
         }
 

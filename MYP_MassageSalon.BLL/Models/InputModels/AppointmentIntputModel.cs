@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MYP_MassageSalon.BLL.Models.InputModels
 {
-    public class AppointmentIntputModel
+    public  class AppointmentIntputModel
     {
         public int ClientId { get; set; }
     }
