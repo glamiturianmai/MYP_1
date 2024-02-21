@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MYP_MassageSalon.BLL.Models.OutputModels
 {
-    public class ClientOutputModel
+    public class TypeOutputModel
     {
-        public int Username { get; set; }
-        public int IPInf { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
     }
 }
