@@ -15,11 +15,13 @@ namespace MYP_MassageSalon.BLL
     public class AppointmentClient
     {
         private AppointmentnRepository _appRepository;
+        private ClientRepository _cliRepository;
         private Mapper _mapper;
 
         public AppointmentClient()
         {
             _appRepository = new AppointmentnRepository();
+            _cliRepository = new ClientRepository();
 
             var config = new MapperConfiguration(cfg => {
                 cfg.AddProfile(new AppointmentMappingProfile()); 
@@ -29,6 +31,15 @@ namespace MYP_MassageSalon.BLL
         public List<AppointmentsOutputModel> GetAllAppointmentsMap()
         {
             List<WorkersDTO> appDtos = _appRepository.GetAllAppointments();
+
+            var result = _mapper.Map<List<AppointmentsOutputModel>>(appDtos);
+
+            return result;
+        }
+
+        public List<AppointmentsOutputModel> GetClientsAppointmentsMap( int id)
+        {
+            List<ClientsDTO> appDtos = _cliRepository.GetClientsAppointments(id);
 
             var result = _mapper.Map<List<AppointmentsOutputModel>>(appDtos);
 

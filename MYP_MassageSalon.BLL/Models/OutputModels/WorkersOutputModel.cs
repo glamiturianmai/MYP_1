@@ -8,8 +8,9 @@ namespace MYP_MassageSalon.BLL.Models.OutputModels
 {
     public class WorkersOutputModel
     {
+        public int Id { get; set; }
         public string Name { get; set; }
-        public string Qualification { get; set; }
+        public List<QualificationWorkersOutputModel> QualificationName { get; set; }
 
     }
 }

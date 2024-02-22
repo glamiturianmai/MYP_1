@@ -22,6 +22,10 @@ namespace MYP_MassageSalon.BLL.Mapping
 
             CreateMap<WorkersDTO, AppointmentsOutputModel>(); //Пожалуйста преобразуй 
             CreateMap<WorkersDTO, AppointmentsAdminOutputModel>();
+
+            CreateMap<ClientAppPrDTO, ClientAppPrOutputModel>();
+            CreateMap<ClientsDTO, AppointmentsOutputModel>(); 
+            
         }
     }
 }
