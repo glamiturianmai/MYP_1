@@ -29,7 +29,7 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
             foreach (var s in _workersTG)
             {
                 keys.Add(new List<InlineKeyboardButton>());
-                keys[keys.Count - 1].Add(new InlineKeyboardButton($"{s.Name}, {s.Qualification}") 
+                keys[keys.Count - 1].Add(new InlineKeyboardButton($"{s.Name}, {s.QualificationName[0].QualificationName}") 
                     { CallbackData = s.Name.ToString() }); // колбек айди поменять
                 count++;
             }

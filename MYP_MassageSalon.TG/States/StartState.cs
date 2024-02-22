@@ -31,9 +31,11 @@ namespace MYP_MassageSalon.TG.States
             else if (update.Type == UpdateType.CallbackQuery)
             {
                 var message = update.CallbackQuery.Data;
+                //int clientId = Int32.Parse(update.CallbackQuery.Data); ; КОСТЫЛЬ ААААААААААААААААААА
+                int clientId = 2;
                 if (message == "SeeApps")
                 {
-                    return this;
+                    return new StateClientSeeApp(clientId);
                 } else if (message == "SetApp")
                 {
                     return new StateClientSetService();
