@@ -10,6 +10,8 @@ namespace MYP_MassageSalon.DAL.StoredProcedures
     {
         public const string DeleteService = "DeleteService";
 
+        public const string GetAllServicesNameWithType = "GetAllServicesName";
+
         public const string GetAllServicesName = "GetAllServicesName";
 
         public const string SetService = "SetService";

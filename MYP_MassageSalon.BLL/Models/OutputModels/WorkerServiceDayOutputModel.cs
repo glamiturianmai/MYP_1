@@ -8,6 +8,6 @@ namespace MYP_MassageSalon.BLL.Models.OutputModels
 {
     public class WorkerServiceDateOutputModel
     {
-        public DateTime Date { get; set; };
+        public DateTime Date { get; set; }
     }
 }
