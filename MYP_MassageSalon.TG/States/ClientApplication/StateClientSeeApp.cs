@@ -26,9 +26,9 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
         {
             if (update.Type == UpdateType.CallbackQuery)
             {
-                int id = Int32.Parse(update.CallbackQuery.Data);
-                //return new StateClinetSetWorker(id);
-                return this;
+                int appId = Int32.Parse(update.CallbackQuery.Data);
+                return new StateClientDoWithApp(appId);
+                
             }
             return this;
         }
@@ -41,13 +41,14 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
             foreach (var s in _appTG)
             {
                 keys.Add(new List<InlineKeyboardButton>());
-                keys[keys.Count - 1].Add(new InlineKeyboardButton($"{s.Name}, {s.ServiceName}, {s.Date}") { CallbackData = s.Id.ToString() });
+               keys[keys.Count - 1].Add(new InlineKeyboardButton($"{s.WorksApp[0].WorkerName}, {s.WorksApp[0].ServiceName}, {s.WorksApp[0].Date}, {s.WorksApp[0].Price}")
+               { CallbackData = s.Id.ToString() });
                 count++;
             }
 
             InlineKeyboardMarkup markup = new InlineKeyboardMarkup(keys);
 
-            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Выберите запись", replyMarkup: markup);
+            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Выберите заявку", replyMarkup: markup);
         }
     }
 }
