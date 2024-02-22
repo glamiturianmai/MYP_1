@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MYP_MassageSalon.DAL.IRepositories;
 using MYP_MassageSalon.BLL.Mapping;
+using MYP_MassageSalon.BLL.Models.InputModels;
 
 namespace MYP_MassageSalon.BLL
 {
@@ -55,6 +56,12 @@ namespace MYP_MassageSalon.BLL
             return result;
         }
 
+        public void DeleteAppointmentMap(DeleteAppIntputModel app)
+        {
+            AppointmentDTO appMod = this._mapper.Map<AppointmentDTO>(app);
+            this._appRepository.DeleteAppointment(appMod);
+            
+        }
 
     }
 }

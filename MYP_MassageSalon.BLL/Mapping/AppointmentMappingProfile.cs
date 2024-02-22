@@ -15,7 +15,9 @@ namespace MYP_MassageSalon.BLL.Mapping
     {
         public AppointmentMappingProfile()
         {
-            CreateMap<AppointmentDTO, AppointmentIntputModel>(); //Пожалуйста преобразуй 
+            CreateMap<DeleteAppIntputModel, AppointmentDTO>();
+
+            CreateMap<AppointmentIntputModel, AppointmentDTO>(); //Пожалуйста преобразуй 
             CreateMap<Service_AppointmentDTO, Service_AppointmentIntputModel>();
 
 

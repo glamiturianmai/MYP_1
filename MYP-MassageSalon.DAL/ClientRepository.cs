@@ -45,11 +45,12 @@ namespace MYP_MassageSalon.DAL
         public List<ClientsDTO> GetClientsAppointments(int Id1) //заявки id мастера - много табличек   
         {
             using (IDbConnection connection = new SqlConnection(Options.ConStr))
-            {
+            {   
                 var parametrs = new
                 {
                     Id = Id1
                 };
+
                 return connection.Query<ClientsDTO, ClientAppPrDTO, ClientsDTO>(
                     ClientsStoredProcedures.GetClientsAppointments,
                     (client, clientapp) =>
