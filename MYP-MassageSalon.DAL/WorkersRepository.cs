@@ -27,7 +27,7 @@ namespace MYP_MassageSalon.DAL
                     WorkersStoredProcedures.GetQualificationWorker,
                     (worker, qualification) =>
                     {
-                        worker.QualificationWorker = qualification;
+                        worker.QualificationName.Add(qualification);
                         return worker;
                     },
                     parametrs,
@@ -117,12 +117,12 @@ namespace MYP_MassageSalon.DAL
                 {
                     Id = Id1
                 };
-                return connection.Query<WorkersDTO, WorkersServiceDTO, WorkersDTO>(
+                return connection.Query<WorkersDTO, QualificationDTO, WorkersDTO>(
                     WorkersStoredProcedures.GetWorkersByServiceId,
-                    (worker, workerservice) =>
+                    (worker, qual) =>
                     {
 
-                        worker.ServiceWork.Add(workerservice);
+                        worker.QualificationName.Add(qual);
                         return worker;
 
                     },
@@ -133,7 +133,24 @@ namespace MYP_MassageSalon.DAL
             }
         }
 
-            public List<WorkersDTO> GetALLQualificationWorkers(int Id1)
+
+        //public List<WorkersDTO> GetWorkersByServiceId( int id)
+        //{
+        //    using (IDbConnection connection = new SqlConnection(Options.ConStr))
+        //    {
+        //        var parametrs = new
+        //        {
+        //            Id = id
+        //        };
+        //        return connection.Query<WorkersDTO>(
+        //            WorkersStoredProcedures.GetWorkersByServiceId,
+        //            parametrs).ToList();
+        //    }
+        //}
+
+
+
+        public List<WorkersDTO> GetALLQualificationWorkers(int Id1)
             {
                 using (IDbConnection connection = new SqlConnection(Options.ConStr))
                 {

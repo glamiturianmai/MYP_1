@@ -10,7 +10,7 @@ namespace MYP_MassageSalon.DAL.Dtos
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string QualificationName { get; set; }
 
         public int ProcentToPrice { get; set; }
 
