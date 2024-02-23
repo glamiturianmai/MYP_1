@@ -13,11 +13,11 @@ namespace MYP_MassageSalon.DAL.Dtos
 
         public DateTime Date { get; set; }
 
-        public int WorkerId { get; set; }
+        public int? WorkerId { get; set; }
 
-        public int AppointmentId { get; set; }
+        public int? AppointmentId { get; set; }
 
-        public bool IsBusy { get; set; }
+        public bool? IsBusy { get; set; }
 
         public int? WorkIntervalId { get; set; }
     }

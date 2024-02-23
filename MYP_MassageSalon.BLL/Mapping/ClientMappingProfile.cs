@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MYP_MassageSalon.BLL.Models.InputModels;
 using MYP_MassageSalon.BLL.Models.OutputModels;
 using MYP_MassageSalon.DAL.Dtos;
 using System;
@@ -14,7 +15,8 @@ namespace MYP_MassageSalon.BLL.Mapping
         public ClientMappingProfile()
         {
             CreateMap<ClientsDTO, ClientOutputModel>(); //Пожалуйста преобразуй 
-
+            CreateMap<IpInfDTO, IpInfOutputModel>();
+            CreateMap<ClientInputModel, ClientsDTO>();
         }
     }
 }

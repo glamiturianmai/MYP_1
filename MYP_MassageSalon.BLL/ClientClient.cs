@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MYP_MassageSalon.BLL.Mapping;
+using MYP_MassageSalon.BLL.Models.InputModels;
 
 namespace MYP_MassageSalon.BLL
 {
@@ -35,5 +36,20 @@ namespace MYP_MassageSalon.BLL
             return result;
         }
 
+        public List<IpInfOutputModel> GetClientIdByIpInfMap(int IpInf)
+        {
+            List<IpInfDTO> clientDtos = _clientRepository.GetClientIdByIpInf(IpInf);
+
+            var result = _mapper.Map<List<IpInfOutputModel>>(clientDtos); //преобразуй список dto в список моделек 
+
+            return result;
+        }
+
+        public void AddClientMap(ClientInputModel client)
+        {
+            ClientsDTO clientMod = this._mapper.Map<ClientsDTO>(client);
+            this._clientRepository.AddClient(clientMod);
+
+        }
     }
 }

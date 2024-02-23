@@ -74,5 +74,30 @@ namespace MYP_MassageSalon.DAL
                     ).ToList();
             }
         }
+
+        public List<IpInfDTO> GetClientIdByIpInf(int IpInf1)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                var parametrs = new
+                {
+                    IpInf = IpInf1
+                };
+                return connection.Query<IpInfDTO>(ClientsStoredProcedures.GetClientIdByIpInf,
+                    parametrs).ToList();
+            }
+        }
+
+        public void AddClient(ClientsDTO client) 
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                connection.Query(ClientsStoredProcedures.AddClient,
+                    new { client.Username, client.IPInf },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
     }
+
+    
 }
