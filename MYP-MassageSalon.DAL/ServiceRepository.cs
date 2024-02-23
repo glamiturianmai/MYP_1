@@ -30,7 +30,7 @@ namespace MYP_MassageSalon.DAL
             using (IDbConnection connection = new SqlConnection(Options.ConStr))
             {
                 connection.Query(ServiceStoredProcedures.SetService,
-                    new { service.Name, service.Cost, service.Time},
+                    new { service.Name, service.Price, service.Time},
                     commandType: CommandType.StoredProcedure);
             }
         }

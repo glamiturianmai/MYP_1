@@ -7,8 +7,8 @@ using MYP_MassageSalon.BLL.Models.OutputModels;
 //WorkersRepository workRep = new WorkersRepository();
 //List<WorkersDTO> a = workRep.GetWorkersByServiceId(2);
 
-//WorkerClient workrep = new WorkerClient();
-//var b = workrep.GetWorkersByServiceIdMap(2);
+WorkerClient workrep = new WorkerClient();
+var b = workrep.GetWorkersByServiceIdMap(2);
 
 
 //ClientRepository workRep = new ClientRepository();
@@ -19,10 +19,13 @@ using MYP_MassageSalon.BLL.Models.OutputModels;
 //AppointmentClient appClient = new AppointmentClient();
 //appClient.DeleteAppointmentMap(q);
 
-ClientsDTO qq = new ClientsDTO();
+//ClientsDTO qq = new ClientsDTO();
 
-ClientRepository apClient = new ClientRepository();
-var a = apClient.GetClientsAppointments(2);
+//ClientRepository apClient = new ClientRepository();
+//var a = apClient.GetClientsAppointments(2);
+
+
+
 
 
 //AppointmentsOutputModel q = new AppointmentsOutputModel();

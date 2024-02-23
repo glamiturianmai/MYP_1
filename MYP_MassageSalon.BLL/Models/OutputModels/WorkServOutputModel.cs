@@ -6,13 +6,9 @@ using System.Threading.Tasks;
 
 namespace MYP_MassageSalon.BLL.Models.OutputModels
 {
-    public class WorkersOutputModel
+    public class WorkServOutputModel
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public List<WorkServOutputModel> WorkServ { get; set; }
-
-
-
+        public string QualificationName { get; set; }
+        public decimal Price { get; set; }
     }
 }

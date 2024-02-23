@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using MYP_MassageSalon.DAL.IRepositories;
 using MYP_MassageSalon.BLL.Mapping;
 using MYP_MassageSalon.BLL.Models.InputModels;
+using static System.Formats.Asn1.AsnWriter;
 
 namespace MYP_MassageSalon.BLL
 {
@@ -42,11 +43,31 @@ namespace MYP_MassageSalon.BLL
         {
             List<ClientsDTO> appDtos = _cliRepository.GetClientsAppointments(id);
 
-            var result = _mapper.Map<List<AppointmentsOutputModel>>(appDtos);
-
-            return result;
+            var a = _mapper.Map<List<AppointmentsOutputModel>>(appDtos);
+            
+            return a;
         }
 
+        //private void GetClientsAppointmentsMapSorted(List<AppointmentsOutputModel> a)
+        //{
+        //    var apps = a[0].WorksApp;
+        //    foreach (var app in apps) {
+
+        //        if (!apps.(app.AppId))
+        //        {
+        //            apps.Add(app.Id, app);
+        //        }
+
+        //        ShopDto crntShop = apps[shop.Id];
+
+        //        crntShop.Products.Add(product);
+
+        //        return crntShop;
+        //    }
+               
+
+
+        //}
         public List<AppointmentsAdminOutputModel> GetAllAppointmentsAdminMap()
         {
             List<WorkersDTO> appDtos = _appRepository.GetAllAppointments();

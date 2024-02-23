@@ -18,20 +18,26 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
         {
             if (update.Type == UpdateType.CallbackQuery)
             {
-                //var message = update.CallbackQuery.Data;
-                ////int clientId = Int32.Parse(update.CallbackQuery.Data); ; КОСТЫЛЬ ААААААААААААААААААА
-                //int clientId = 2;
-                //if (message == "SeeApps")
-                //{
-                //    return new StateClientSeeApp(clientId);
-                //}
-                //else if (message == "SetApp")
-                //{
-                //    return new StateClientSetService();
-                //}
-                return this;
+                var message = update.CallbackQuery.Data;
+
+                if (message == "workers")
+                {
+
+                    return this;
+                }
+                else if (message == "services")
+                {
+                    return this;
+                }
+                else if (message == "appointments")
+                {
+                    return this;
+                }
+                else return this;
+
             }
-            return this;
+            else return this;
+            
         }
 
         public override void SendMessage(long chatId)
