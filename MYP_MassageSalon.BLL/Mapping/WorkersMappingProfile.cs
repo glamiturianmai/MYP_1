@@ -15,6 +15,8 @@ namespace MYP_MassageSalon.BLL.Mapping
         {
             //CreateMap<WorkersDTO, WorkersAdminOutputModel>();
             CreateMap<WorkersDTO, WorkersOutputModel>();
+
+            CreateMap<WorkersDTO, WorkersAllOutputModel>();
             CreateMap<QualificationDTO, QualificationWorkersOutputModel>();
             CreateMap<TypeDTO, TypeOutputModel>();
 
