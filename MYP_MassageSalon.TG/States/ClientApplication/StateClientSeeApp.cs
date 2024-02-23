@@ -14,12 +14,12 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
 {
     public class StateClientSeeApp : AbstractState
     {
-        private List<AppointmentsOutputModel> _appTG;
+        private List<ClientAppPrOutputModel> _appTG;
         private int _clientId;
         public StateClientSeeApp(int clientId)
         {
             _clientId = clientId;
-            _appTG = new AppointmentClient().GetClientsAppointmentsMap(clientId);
+            _appTG = new AppointmentClient().GetPlease(clientId);
         }
 
         public override AbstractState ReceiveMessage(Update update)
@@ -37,13 +37,16 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
         {
             List<List<InlineKeyboardButton>> keys = new List<List<InlineKeyboardButton>>();
 
-            int count = 0;
-            foreach (var s in _appTG)
+
+            for (var i=0; i<_appTG.Count; i++)
             {
                 keys.Add(new List<InlineKeyboardButton>());
-               keys[keys.Count - 1].Add(new InlineKeyboardButton($"{s.WorksApp[0].WorkerName}, {s.WorksApp[0].ServiceName}, {s.WorksApp[0].Date}, {s.WorksApp[0].Price}")
-               { CallbackData = s.WorksApp[0].AppId.ToString() });
-                count++;
+                if (i % 2 == 0)
+                {
+                    keys[keys.Count - 1].Add(new InlineKeyboardButton($"{_appTG[i].WorkerName}, {_appTG[i].ServiceName}, {_appTG[i].Date.DayOfYear}, {_appTG[i].Date.TimeOfDay}-{_appTG[i+1].Date.AddMinutes(15).TimeOfDay}, {_appTG[i].Price}")
+                    { CallbackData = _appTG[i].AppId.ToString() });
+                }
+                
             }
 
             InlineKeyboardMarkup markup = new InlineKeyboardMarkup(keys);
