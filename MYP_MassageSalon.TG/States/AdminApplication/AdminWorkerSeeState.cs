@@ -7,10 +7,10 @@ using Telegram.Bot.Types.ReplyMarkups;
 
 namespace MYP_MassageSalon.TG.States.AdminApplication
 {
-    public class AdminWorkerState : AbstractState
+    public class AdminWorkerSeeState : AbstractState
     {
         private List<WorkersAllOutputModel> _workTG;
-        public AdminWorkerState()
+        public AdminWorkerSeeState()
         {
             _workTG = new WorkerClient().GetAllWorkerMap();
         }
@@ -19,9 +19,8 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
         {
             if (update.Type == UpdateType.CallbackQuery)
             {
-                int appId = Int32.Parse(update.CallbackQuery.Data);
-                //return new StateClientDoWithApp(appId);
-                return this;
+                int workId = Int32.Parse(update.CallbackQuery.Data);
+                return new AdminWorkerChooseState(workId);
             }
             return this;
         }
