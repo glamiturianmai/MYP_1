@@ -14,11 +14,13 @@ namespace MYP_MassageSalon.BLL
     public class WorkerClient
     {
         private WorkersRepository _workRepository;
+        private ScheduleIntervalRepository _intRepository;
         private Mapper _mapper;
 
         public WorkerClient()
         {
             _workRepository = new WorkersRepository();
+            _intRepository = new ScheduleIntervalRepository();
 
             var config = new MapperConfiguration(cfg => {
                 cfg.AddProfile(new WorkersMappingProfile()); //пожалуйста возьми вот этот профиль 
@@ -31,6 +33,15 @@ namespace MYP_MassageSalon.BLL
             List<WorkersDTO> workDtos = _workRepository.GetWorkersByServiceId(id1);
 
             var result = _mapper.Map<List<WorkersOutputModel>>(workDtos); //преобразуй список dto в список моделек 
+
+            return result;
+        }
+
+        public List<IntervalsOutputModel> GetScheduleIntervalsForWorkersMap(int id1)
+        {
+            List<SheduleIntervalDTO> workDtos = _intRepository.GetScheduleIntervalsForWorkers(id1);
+
+            var result = _mapper.Map<List<IntervalsOutputModel>>(workDtos);
 
             return result;
         }
