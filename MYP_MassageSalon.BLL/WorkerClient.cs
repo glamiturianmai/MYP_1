@@ -21,7 +21,7 @@ namespace MYP_MassageSalon.BLL
             _workRepository = new WorkersRepository();
 
             var config = new MapperConfiguration(cfg => {
-                cfg.AddProfile(new WorkersMappingProfile()); //пожалуйста возьми вот этот профиль 
+                cfg.AddProfile(new WorkersMappingProfile()); 
             });
             _mapper = new Mapper(config);
         }
@@ -30,12 +30,21 @@ namespace MYP_MassageSalon.BLL
         {
             List<WorkersDTO> workDtos = _workRepository.GetWorkersByServiceId(id1);
 
-            var result = _mapper.Map<List<WorkersOutputModel>>(workDtos); //преобразуй список dto в список моделек 
+            var result = _mapper.Map<List<WorkersOutputModel>>(workDtos); 
 
             return result;
         }
 
-       
+        public List<WorkersAllOutputModel> GetAllWorkerMap()
+        {
+            List<WorkersDTO> workDtos = _workRepository.GetAllWorker();
+
+            var result = _mapper.Map<List<WorkersAllOutputModel>>(workDtos); 
+
+            return result;
+        }
+
+
 
 
     }

@@ -43,31 +43,40 @@ namespace MYP_MassageSalon.BLL
         {
             List<ClientsDTO> appDtos = _cliRepository.GetClientsAppointments(id);
 
-            var a = _mapper.Map<List<AppointmentsOutputModel>>(appDtos);
+            var result = _mapper.Map<List<AppointmentsOutputModel>>(appDtos);
             
-            return a;
+            return result;
         }
 
-        //private void GetClientsAppointmentsMapSorted(List<AppointmentsOutputModel> a)
-        //{
-        //    var apps = a[0].WorksApp;
-        //    foreach (var app in apps) {
+        private List<ClientAppPrOutputModel> GetClientsAppointmentsMapSortedSecond(List<AppointmentsOutputModel> a)
+        {
+            var apps = a[0].WorksApp;
+            int lengthinterval = 15;
+            
+            var timestart = apps[0].Date.TimeOfDay; //
 
-        //        if (!apps.(app.AppId))
-        //        {
-        //            apps.Add(app.Id, app);
-        //        }
+            List<ClientAppPrOutputModel> list1 = new List<ClientAppPrOutputModel>();
+            for (int i=0; i < apps.Count;  i++)
+            {
+                var n = apps[i].Duration / lengthinterval;
+                list1.Add(apps[i]);
+                i += n - 1;
+                list1.Add(apps[i]);
+            }
 
-        //        ShopDto crntShop = apps[shop.Id];
+            return list1;
+            
+        }
+         
+        public List<ClientAppPrOutputModel> GetPlease(int Id)
+        {
+            var a = GetClientsAppointmentsMap(Id);
+            var b = GetClientsAppointmentsMapSortedSecond(a);
+            return b;
+        }
 
-        //        crntShop.Products.Add(product);
 
-        //        return crntShop;
-        //    }
-               
-
-
-        //}
+         
         public List<AppointmentsAdminOutputModel> GetAllAppointmentsAdminMap()
         {
             List<WorkersDTO> appDtos = _appRepository.GetAllAppointments();
