@@ -9,5 +9,7 @@ namespace MYP_MassageSalon.DAL.StoredProcedures
     public class ScheduleIntervalStoredProcedures
     {
         public const string SetScheduleInterval = "SetScheduleInterval";
+
+        public const string GetScheduleIntervalsForWorkers = "GetScheduleIntervalsForWorkers";
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace MYP_MassageSalon.BLL.Models.OutputModels
 {
-    internal class IntervalsOutputModel
+    public class IntervalsOutputModel
     {
+        public DateTime Date { get; set; }
     }
 }
