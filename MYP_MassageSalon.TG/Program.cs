@@ -42,9 +42,10 @@ namespace MYP_MassageSalon.TG
         {
             var users = SingletoneStorage.GetStorage().Clients;
             long id = update.Message != null ? update.Message.Chat.Id : update.CallbackQuery.From.Id;
-
+            
             if (!users.ContainsKey(id))
-            {
+            { 
+                
                 users.Add(id, new StartState());
             }
             else
