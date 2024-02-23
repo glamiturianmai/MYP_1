@@ -122,7 +122,6 @@ namespace MYP_MassageSalon.DAL
                     commandType: CommandType.StoredProcedure
                     ).ToList();
             }
-
         }
 
 
@@ -168,24 +167,27 @@ namespace MYP_MassageSalon.DAL
 
 
         public List<WorkersDTO> GetALLQualificationWorkers(int Id1)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
             {
-                using (IDbConnection connection = new SqlConnection(Options.ConStr))
-                {
 
-                    return connection.Query<WorkersDTO, WorkersServiceDTO, WorkersDTO>(
-                        WorkersStoredProcedures.GetALLQualificationWorkers,
-                        (worker, workerservice) =>
-                        {
+                return connection.Query<WorkersDTO, WorkersServiceDTO, WorkersDTO>(
+                    WorkersStoredProcedures.GetALLQualificationWorkers,
+                    (worker, workerservice) =>
+                    {
 
-                            worker.ServiceWork.Add(workerservice);
-                            return worker;
+                        worker.ServiceWork.Add(workerservice);
+                        return worker;
 
-                        },
+                    },
 
-                        splitOn: "QualificationName",
-                        commandType: CommandType.StoredProcedure
-                        ).ToList();
-                }
+                    splitOn: "QualificationName",
+                    commandType: CommandType.StoredProcedure
+                    ).ToList();
+
             }
+        }
+
+
     }
 }

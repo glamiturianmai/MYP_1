@@ -13,5 +13,7 @@ namespace MYP_MassageSalon.DAL.StoredProcedures
         public const string GetClientsAppointments = "GetClientsAppointments";
         public const string GetALLQualification = "GetALLQualification";
         public const string GetALLType = "GetALLType";
+        public const string GetClientIdByIpInf = "GetClientIdByIpInf";
+        public const string AddClient = "AddClient";
     }
 }

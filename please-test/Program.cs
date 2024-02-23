@@ -4,11 +4,11 @@ using MYP_MassageSalon.BLL;
 using MYP_MassageSalon.BLL.Models.InputModels;
 using MYP_MassageSalon.BLL.Models.OutputModels;
 
-WorkersRepository workRep = new WorkersRepository();
-List<WorkersDTO> a = workRep.GetAllWorker();
+//WorkersRepository workRep = new WorkersRepository();
+//List<WorkersDTO> a = workRep.GetWorkersByServiceId(2);
 
 WorkerClient workrep = new WorkerClient();
-var b = workrep.GetAllWorkerMap();
+var b = workrep.GetWorkersByServiceIdMap(2);
 
 
 //ClientRepository workRep = new ClientRepository();

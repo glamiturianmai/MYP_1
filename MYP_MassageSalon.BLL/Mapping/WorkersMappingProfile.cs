@@ -23,6 +23,8 @@ namespace MYP_MassageSalon.BLL.Mapping
 
             CreateMap<WorkServDTO, WorkServOutputModel>();
 
+            CreateMap<SheduleIntervalDTO, IntervalsOutputModel>();
+
         }
     }
 }
