@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MYP_MassageSalon.BLL", "MYP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MYP_MassageSalon.TG", "MYP_MassageSalon.TG\MYP_MassageSalon.TG.csproj", "{F566CDF3-6292-4061-AE28-BD901F22A56F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "please-test", "please-test\please-test.csproj", "{ED78958D-9398-43F4-A9A8-D562D35C3979}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{F566CDF3-6292-4061-AE28-BD901F22A56F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F566CDF3-6292-4061-AE28-BD901F22A56F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F566CDF3-6292-4061-AE28-BD901F22A56F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ED78958D-9398-43F4-A9A8-D562D35C3979}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ED78958D-9398-43F4-A9A8-D562D35C3979}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ED78958D-9398-43F4-A9A8-D562D35C3979}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ED78958D-9398-43F4-A9A8-D562D35C3979}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
