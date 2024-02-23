@@ -18,5 +18,7 @@ namespace MYP_MassageSalon.BLL.Models.OutputModels
 
         public decimal Price { get; set; }
 
+        public int Duration { get; set; }
+
     }
 }

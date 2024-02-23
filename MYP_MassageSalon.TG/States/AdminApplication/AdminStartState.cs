@@ -23,7 +23,7 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                 if (message == "workers")
                 {
 
-                    return this;
+                    return new AdminWorkerState();
                 }
                 else if (message == "services")
                 {
@@ -32,6 +32,10 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                 else if (message == "appointments")
                 {
                     return this;
+                }
+                else if (message == "sheduleinterval")
+                {
+                    return new AdminSetSheduleState();
                 }
                 else return this;
 
@@ -60,10 +64,14 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                         new InlineKeyboardButton[]
                         {
                             new InlineKeyboardButton("Записи") {CallbackData="appointments"}
+                        },
+                        new InlineKeyboardButton[]
+                        {
+                            new InlineKeyboardButton("ДЛЯ НАСТИ") {CallbackData="sheduleinterval"}
                         }
                 }
                 );
-            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Здравствуйте администратор!", replyMarkup: markup);
+            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Здравствуйте, администратор!", replyMarkup: markup);
         }
 
     }

@@ -37,6 +37,23 @@ namespace MYP_MassageSalon.DAL
             }
         }
 
+        public List<WorkersDTO> GetAllWorker()   
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                return connection.Query<WorkersDTO, QualificationDTO, WorkersDTO>(
+                    WorkersStoredProcedures.GetAllWorker,
+                    (worker, qualification) =>
+                    {
+                        worker.QualificationName.Add(qualification);
+                        return worker;
+                    },
+                    splitOn: "QualificationId",
+                    commandType: CommandType.StoredProcedure
+                    ).ToList();
+            }
+        }
+
 
         public List<WorkersDTO> GetWorkerAppointments(int Id1) //заявки id мастера - много табличек   
         {
@@ -116,12 +133,12 @@ namespace MYP_MassageSalon.DAL
                 {
                     Id = Id1
                 };
-                return connection.Query<WorkersDTO, WorkServDTO, WorkersDTO>(
+                return connection.Query<WorkersDTO, QualificationDTO, WorkersDTO>(
                     WorkersStoredProcedures.GetWorkersByServiceId,
                     (worker, qual) =>
                     {
 
-                        worker.WorkServ.Add(qual);
+                        worker.QualificationName.Add(qual);
                         return worker;
 
                     },

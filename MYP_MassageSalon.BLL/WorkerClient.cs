@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using MYP_MassageSalon.BLL.Models.OutputModels;
 using MYP_MassageSalon.DAL.Dtos;
 using MYP_MassageSalon.DAL;
@@ -25,7 +25,7 @@ namespace MYP_MassageSalon.BLL
             _intRepository = new ScheduleIntervalRepository();
 
             var config = new MapperConfiguration(cfg => {
-                cfg.AddProfile(new WorkersMappingProfile()); //пожалуйста возьми вот этот профиль 
+                cfg.AddProfile(new WorkersMappingProfile()); 
             });
             _mapper = new Mapper(config);
         }
@@ -34,45 +34,22 @@ namespace MYP_MassageSalon.BLL
         {
             List<WorkersDTO> workDtos = _workRepository.GetWorkersByServiceId(id1);
 
-            var result = _mapper.Map<List<WorkersOutputModel>>(workDtos); //преобразуй список dto в список моделек 
+            var result = _mapper.Map<List<WorkersOutputModel>>(workDtos); 
 
             return result;
         }
 
-        public List<IntervalsOutputModel> GetScheduleIntervalsForWorkersMap(int id1)
+        public List<WorkersAllOutputModel> GetAllWorkerMap()
         {
-            List<SheduleIntervalDTO> workDtos = _intRepository.GetScheduleIntervalsForWorkers(id1);
+            List<WorkersDTO> workDtos = _workRepository.GetAllWorker();
 
-            var result = _mapper.Map<List<IntervalsOutputModel>>(workDtos);
+            var result = _mapper.Map<List<WorkersAllOutputModel>>(workDtos); 
 
             return result;
         }
 
-        public Dictionary<string, List<IntervalsOutputModel>> CheckOutIntervals(int serviceDuration, int workerId)
-        {
-            List<IntervalsOutputModel> dates = GetScheduleIntervalsForWorkersMap(workerId);
-            Dictionary<string, List<IntervalsOutputModel>> intervals = 
-                new Dictionary<string, List<IntervalsOutputModel>>();
 
-            int count = serviceDuration / intervalDuration;
-            for (int i = 0; i < dates.Count; i++)
-            {
-                int end_ind = i + count - 1;
-                if (end_ind < dates.Count)
-                {
-                    string day1 = dates[i].Date.ToString("d");
-                    string day2 = dates[end_ind].Date.ToString("d");
 
-                    if (dates[i].Id + count - 1 == dates[end_ind].Id 
-                        && day1.Equals(day2))
-                    {
-                        intervals[day1].Add(dates[i]);
-                    }
-                }
-            }
-
-            return intervals;
-        }
 
     }
 }
