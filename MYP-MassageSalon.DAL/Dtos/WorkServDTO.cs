@@ -8,7 +8,7 @@ namespace MYP_MassageSalon.DAL.Dtos
 {
     public  class WorkServDTO
     {
-        public string QualificationName { get; set; }
+        public string Qualification { get; set; }
         public decimal Price { get; set; }
     }
 }
