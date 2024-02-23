@@ -43,7 +43,7 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
                 keys.Add(new List<InlineKeyboardButton>());
                 if (i % 2 == 0)
                 {
-                    keys[keys.Count - 1].Add(new InlineKeyboardButton($"{_appTG[i].WorkerName}, {_appTG[i].ServiceName}, {_appTG[i].Date.DayOfYear}, {_appTG[i].Date.TimeOfDay}-{_appTG[i+1].Date.AddMinutes(15).TimeOfDay}, {_appTG[i].Price}")
+                    keys[keys.Count - 1].Add(new InlineKeyboardButton($"{_appTG[i].WorkerName}, {_appTG[i].ServiceName}, {_appTG[i].Date.DayOfYear}, {_appTG[i].Date.TimeOfDay}-{_appTG[i+1].Date.AddMinutes(15).TimeOfDay}, {_appTG[i].Price} руб.")
                     { CallbackData = _appTG[i].AppId.ToString() });
                 }
                 

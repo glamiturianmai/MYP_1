@@ -23,7 +23,7 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                 if (message == "workers")
                 {
 
-                    return this;
+                    return new AdminWorkerState();
                 }
                 else if (message == "services")
                 {
