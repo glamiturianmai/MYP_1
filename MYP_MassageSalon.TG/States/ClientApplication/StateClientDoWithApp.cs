@@ -29,11 +29,11 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
                 //int appId = 2;
                 int appId = _appId;
                 var message = update.CallbackQuery.Data;
-                
-                if (message == "Cansel")
+
+                if (message == "Cancel")
                 {
-                    return this;
-                    //return new StateClientDeleteAskApp(clientId);
+
+                    return new StateClientDeleteAskApp(appId);
                 }
                 else if (message == "Edit")
                 {
@@ -41,12 +41,18 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
                 }
                 else if (message == "back")
                 {
-                    return new StateClientDoWithApp(appId);
+                    return new StartState();
                 }
-                //return new StateClientDoWithApp(id);
-                
+                else
+                {
+                    return this;
+                }
+
             }
-            return this;
+            else
+            {
+                return this;
+            }
         }
 
         public override void SendMessage(long chatId)
@@ -66,7 +72,7 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
                         },
                         new InlineKeyboardButton[]
                         {
-                            new InlineKeyboardButton("назад") {CallbackData="back"}
+                            new InlineKeyboardButton("назад!") {CallbackData="back"}
                         }
                     }
                     );

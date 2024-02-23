@@ -41,8 +41,22 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
 
         public override void SendMessage(long chatId)
         {
-            _appClient.DeleteAppointmentMap(_appTG);
-            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Давате изменим вашу заявку!");//ВОТ ТУТ НУЖНА КНОПКА
+
+            _appClient.DeleteAppointmentMap(_appTG); // не работает 
+
+
+            InlineKeyboardMarkup markup = new InlineKeyboardMarkup(
+                   new InlineKeyboardButton[][]
+                   {
+                        new InlineKeyboardButton[]
+                        {
+                            new InlineKeyboardButton("Давайте") {CallbackData="SeeApps"}
+
+                        }
+                   }
+                   );
+            
+            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Давате изменим вашу заявку!", replyMarkup: markup);
         }
     }
 }
