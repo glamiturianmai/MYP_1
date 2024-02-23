@@ -1,4 +1,5 @@
-﻿using MYP_MassageSalon.TG.States.ClientApplication;
+﻿using MYP_MassageSalon.TG.States.AdminApplication;
+using MYP_MassageSalon.TG.States.ClientApplication;
 using MYP_MassageSalon.TG.TypaBLL;
 using System;
 using System.Collections.Generic;
@@ -23,10 +24,19 @@ namespace MYP_MassageSalon.TG.States
         public override AbstractState ReceiveMessage(Update update)
         {
             if (update.Type == UpdateType.Message)
-            { 
-                //TODO: добавить проверку на наличие клиента в базе
-                _clients.AddClient(update.Message.Chat.Id, update.Message.Text);
-                return this;
+            {
+                var message = update.Message.Text.ToString();
+                if (message == "/admin")
+                {
+                    return new AdminStartState();
+                }
+                else
+                {
+                    //TODO: добавить проверку на наличие клиента в базе
+                    _clients.AddClient(update.Message.Chat.Id, update.Message.Text);
+                    return this;
+                }
+                
             }
             else if (update.Type == UpdateType.CallbackQuery)
             {
