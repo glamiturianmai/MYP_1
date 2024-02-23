@@ -27,12 +27,20 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
         {
             if (update.Type == UpdateType.CallbackQuery)
             {
-                int id = Int32.Parse(update.CallbackQuery.Data);
-                return new StateClinetSetWorker(id);
+                if (update.CallbackQuery.Data == "/back")
+                {
+                    return new StartState();
+                } 
+                else
+                {
+                    int serviceId = Int32.Parse(update.CallbackQuery.Data);
+                    return new StateClinetSetWorker(serviceId, _servicesTG[serviceId].Time);
+                }
+                
             }
             return this;
         }
-
+        
         public override void SendMessage(long chatId)
         {
             List<List<InlineKeyboardButton>> keys = new List<List<InlineKeyboardButton>>();
@@ -41,9 +49,15 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
             foreach (var s in _servicesTG)
             {
                 keys.Add(new List<InlineKeyboardButton>());
-                keys[keys.Count - 1].Add(new InlineKeyboardButton($"{s.Name}, {s.Time} минут") { CallbackData = s.Id.ToString()});
+                keys[keys.Count - 1].Add(new InlineKeyboardButton($"{s.Name}, {s.Time} минут") 
+                    { CallbackData = s.Id.ToString()}
+                );
                 count++;
             }
+            keys.Add(new List<InlineKeyboardButton>()
+            {
+                new InlineKeyboardButton("Вернуться в главное меню ->") { CallbackData = "/back"}
+            });
 
             InlineKeyboardMarkup markup = new InlineKeyboardMarkup(keys);
 
