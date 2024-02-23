@@ -8,6 +8,7 @@ namespace MYP_MassageSalon.DAL.Dtos
 {
     public class ClientAppPrDTO
     {
+        public int AppId { get; set; }
         public int IntervalId { get; set; }
         public DateTime Date { get; set;}
 

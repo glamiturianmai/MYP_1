@@ -42,7 +42,7 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
             {
                 keys.Add(new List<InlineKeyboardButton>());
                keys[keys.Count - 1].Add(new InlineKeyboardButton($"{s.WorksApp[0].WorkerName}, {s.WorksApp[0].ServiceName}, {s.WorksApp[0].Date}, {s.WorksApp[0].Price}")
-               { CallbackData = s.Id.ToString() });
+               { CallbackData = s.WorksApp[0].AppId.ToString() });
                 count++;
             }
 

@@ -7,6 +7,7 @@ using System.Linq;
 using Dapper;
 using MYP_MassageSalon.DAL.StoredProcedures;
 using MYP_MassageSalon.DAL.Dtos;
+using static System.Formats.Asn1.AsnWriter;
 
 
 namespace MYP_MassageSalon.DAL
@@ -45,7 +46,8 @@ namespace MYP_MassageSalon.DAL
         public List<ClientsDTO> GetClientsAppointments(int Id1) //заявки id мастера - много табличек   
         {
             using (IDbConnection connection = new SqlConnection(Options.ConStr))
-            {   
+            {
+                Dictionary<int, ClientsDTO> apps = new Dictionary<int, ClientsDTO>();
                 var parametrs = new
                 {
                     Id = Id1
@@ -55,11 +57,19 @@ namespace MYP_MassageSalon.DAL
                     ClientsStoredProcedures.GetClientsAppointments,
                     (client, clientapp) =>
                     {
-                        client.ClientApp.Add(clientapp);
-                        return client;
+                        if (!apps.ContainsKey(client.Id))
+                        {
+                            apps.Add((client.Id), client);
+                        }
+
+                        ClientsDTO crntShop = apps[client.Id];
+
+                        crntShop.ClientApp.Add(clientapp);
+
+                        return crntShop;
                     },
                     parametrs,
-                    splitOn: "IntervalId",
+                    splitOn: "AppId",
                     commandType: CommandType.StoredProcedure
                     ).ToList();
             }
