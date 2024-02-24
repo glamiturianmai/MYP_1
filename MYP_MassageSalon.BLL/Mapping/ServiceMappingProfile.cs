@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MYP_MassageSalon.BLL.Models.InputModels;
 using MYP_MassageSalon.BLL.Models.OutputModels;
 using MYP_MassageSalon.DAL.Dtos;
 using System;
@@ -15,7 +16,9 @@ namespace MYP_MassageSalon.BLL.Mapping
         {
             CreateMap<ServicesDTO, ServiceOutputModel>();  
             CreateMap<Services_TypeDTO, ServiceTypeOutputModel>();
-
+            CreateMap<ServiceIntputModel, ServicesDTO>();
+            CreateMap<ServicesDTO, ServiceAdminOutputModel>();
+            CreateMap<DeleteServiceInputModel, ServicesDTO>();
         }
     }
 }

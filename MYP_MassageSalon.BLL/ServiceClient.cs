@@ -10,6 +10,7 @@ using MYP_MassageSalon.DAL;
 using MYP_MassageSalon.DAL.Dtos;
 using MYP_MassageSalon.DAL.IRepositories;
 using AutoMapper;
+using MYP_MassageSalon.BLL.Models.InputModels;
 
 
 namespace MYP_MassageSalon.BLL
@@ -38,6 +39,29 @@ namespace MYP_MassageSalon.BLL
             return result;
         }
 
+        public List<ServiceAdminOutputModel> GetAllServicesMap()
+        {
+            List<ServicesDTO> servDtos = _serviceRepository.GetAllServices();
+
+            var result = _mapper.Map<List<ServiceAdminOutputModel>>(servDtos); //преобразуй список dto в список моделек 
+
+            return result;
+        }
+
+
+        public void SetServiceMap(ServiceIntputModel work)
+        {
+            ServicesDTO workMod = this._mapper.Map<ServicesDTO>(work);
+            this._serviceRepository.SetService(workMod);
+
+        }
+
+        public void DeleteServiceMap(DeleteServiceInputModel work)
+        {
+            ServicesDTO workMod = this._mapper.Map<ServicesDTO>(work);
+            this._serviceRepository.DeleteService(workMod);
+
+        }
 
     }
 }

@@ -14,6 +14,8 @@ namespace MYP_MassageSalon.DAL.StoredProcedures
 
         public const string GetAllServicesName = "GetAllServicesName";
 
+        public const string GetAllServices = "GetAllServices";
+
         public const string SetService = "SetService";
     }
 }

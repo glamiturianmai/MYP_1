@@ -10,7 +10,7 @@ using Telegram.Bot;
 
 namespace MYP_MassageSalon.TG.States.AdminApplication
 {
-    public class AdminWorkerDoState : AbstractState
+    public class AdminServiceDoState: AbstractState
     {
         public override AbstractState ReceiveMessage(Update update)
         {
@@ -20,12 +20,11 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
 
                 if (message == "see")
                 {
-
-                    return new AdminWorkerSeeState();
+                    return new AdminServiceSeeState();
                 }
                 else if (message == "add")
                 {
-                    return new AdminWorkerAddNameState();
+                    return new AdminServiceAddNameState();
                 }
                 else if (message == "back")
                 {
@@ -52,7 +51,7 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                 {
                         new InlineKeyboardButton[]
                         {
-                            new InlineKeyboardButton("Наши мастера") {CallbackData="see"}
+                            new InlineKeyboardButton("Наши услуги") {CallbackData="see"}
 
                         },
                         new InlineKeyboardButton[]
@@ -71,6 +70,5 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                 );
             SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Что будем делать?", replyMarkup: markup);
         }
-
     }
 }

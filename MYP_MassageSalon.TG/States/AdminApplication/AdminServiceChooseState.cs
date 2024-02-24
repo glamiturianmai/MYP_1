@@ -10,54 +10,60 @@ using Telegram.Bot;
 
 namespace MYP_MassageSalon.TG.States.AdminApplication
 {
-    public class AdminWorkerDoState : AbstractState
+    public class AdminServiceChooseState : AbstractState
     {
+
+        private int _servId;
+
+        public AdminServiceChooseState(int servid)
+        {
+            _servId = servid;
+
+        }
+
         public override AbstractState ReceiveMessage(Update update)
         {
             if (update.Type == UpdateType.CallbackQuery)
             {
+
+                int workId = _servId;
                 var message = update.CallbackQuery.Data;
 
-                if (message == "see")
+                if (message == "delete")
                 {
 
-                    return new AdminWorkerSeeState();
-                }
-                else if (message == "add")
-                {
-                    return new AdminWorkerAddNameState();
+                    return new AdminServiceDeleteAskState(workId);
                 }
                 else if (message == "back")
                 {
-                    return new AdminStartState();
+                    return new AdminServiceSeeState();
                 }
                 else if (message == "home")
                 {
                     return new AdminStartState();
                 }
-                else return this;
+                else
+                {
+                    return this;
+                }
 
             }
-            else return this;
-
+            else
+            {
+                return this;
+            }
         }
 
         public override void SendMessage(long chatId)
         {
 
-
-
             InlineKeyboardMarkup markup = new InlineKeyboardMarkup(
-                new InlineKeyboardButton[][]
-                {
+                    new InlineKeyboardButton[][]
+                    {
                         new InlineKeyboardButton[]
                         {
-                            new InlineKeyboardButton("Наши мастера") {CallbackData="see"}
+                            new InlineKeyboardButton("Удалить") {CallbackData="delete"}
 
-                        },
-                        new InlineKeyboardButton[]
-                        {
-                            new InlineKeyboardButton("Добавить") {CallbackData="add"}
                         },
                         new InlineKeyboardButton[]
                         {
@@ -67,10 +73,9 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                         {
                             new InlineKeyboardButton("домой") {CallbackData="home"}
                         }
-                }
-                );
-            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Что будем делать?", replyMarkup: markup);
+                    }
+                    );
+            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Что же вы хотите сделать?", replyMarkup: markup);
         }
-
     }
 }

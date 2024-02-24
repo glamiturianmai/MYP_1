@@ -27,7 +27,7 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                 }
                 else if (message == "services")
                 {
-                    return this;
+                    return new AdminServiceDoState();
                 }
                 else if (message == "appointments")
                 {

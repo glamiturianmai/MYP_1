@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace MYP_MassageSalon.BLL.Models.InputModels
 {
-    public class Service_AppointmentIntputModel
+    public class ServiceIntputModel
     {
-        public int? ApppId { get; set; }
-        public int ServiceId { get; set; }
-
-        public int WorkerId { get; set; }
+        public string Name { get; set; }
         public int Price { get; set; }
+
+        public int Time { get; set; }
     }
 }

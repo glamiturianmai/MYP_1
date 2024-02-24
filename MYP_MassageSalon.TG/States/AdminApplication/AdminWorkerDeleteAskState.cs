@@ -40,7 +40,7 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                 }
                 else if (message == "home")
                 {
-                    return new StartState();
+                    return new AdminStartState();
                 }
 
             }
