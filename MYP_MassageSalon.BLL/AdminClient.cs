@@ -1,13 +1,7 @@
 ﻿using AutoMapper;
-using MYP_MassageSalon.BLL.Models.OutputModels;
-using MYP_MassageSalon.DAL.Dtos;
-using MYP_MassageSalon.DAL;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using MYP_MassageSalon.BLL.Mapping;
+using MYP_MassageSalon.BLL.Models.OutputModels;
+using MYP_MassageSalon.DAL;
 
 namespace MYP_MassageSalon.BLL;
 
@@ -20,7 +14,8 @@ public class AdminsClient
   {
     _clientRepository = new ClientRepository();
 
-    var config = new MapperConfiguration(cfg => {
+    var config = new MapperConfiguration(cfg =>
+    {
       cfg.AddProfile(new AdminMappingProfile()); //пожалуйста возьми вот этот профиль 
     });
     _mapper = new Mapper(config);

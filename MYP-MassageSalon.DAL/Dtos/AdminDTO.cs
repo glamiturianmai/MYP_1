@@ -7,8 +7,11 @@ public class AdminDTO
   public string Username { get; set; }
 
   public int? IPInf { get; set; }
+
   public int? Workers { get; set; }
+
   public int? Services { get; set; }
+
   public int? Appointment { get; set; }
 
   public bool IsDeleted { get; set; }
