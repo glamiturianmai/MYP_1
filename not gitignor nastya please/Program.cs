@@ -15,10 +15,17 @@ using MYP_MassageSalon.DAL.Dtos;
 
 
 
-ServiceClient q = new ServiceClient();
-DeleteServiceInputModel dto = new DeleteServiceInputModel();
-dto.Id = 10;
-q.DeleteServiceMap(dto);
+AppointmentClient q = new AppointmentClient();
+AddAppClientIntputModel dto = new AddAppClientIntputModel();
+AddAppIntputModel m = new AddAppIntputModel();
+dto.ClientId = 3;
 
+//q.AddAppointmentMap(dto);
+m.WorkerId = 5;
+m.Price = 666;
+m.AppointmentId = 11;
+m.ServicesId = 8;
 
-Console.ReadLine();
+q.AddService_AppointmentMap(m);
+
+//Console.ReadLine();

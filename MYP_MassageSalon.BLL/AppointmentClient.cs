@@ -93,5 +93,19 @@ namespace MYP_MassageSalon.BLL
             
         }
 
+        public void AddAppointmentMap(AddAppClientIntputModel app)
+        {
+            AppointmentDTO appMod = this._mapper.Map<AppointmentDTO>(app);
+            this._appRepository.AddAppointment(appMod);
+
+        }
+
+        public void AddService_AppointmentMap(AddAppIntputModel app)
+        {
+            Service_AppointmentDTO appMod = this._mapper.Map<Service_AppointmentDTO>(app);
+            this._appRepository.AddService_Appointment(appMod);
+
+        }
+
     }
 }
