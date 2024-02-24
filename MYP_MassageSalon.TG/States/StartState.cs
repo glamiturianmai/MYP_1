@@ -1,5 +1,6 @@
 ﻿using MYP_MassageSalon.TG.States.AdminApplication;
 using MYP_MassageSalon.TG.States.ClientApplication;
+using MYP_MassageSalon.TG.States.MasterApplication;
 using MYP_MassageSalon.TG.TypaBLL;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,10 @@ namespace MYP_MassageSalon.TG.States
                 if (message == "/admin")
                 {
                     return new AdminStartState();
+                }
+                else if (message == "/master")
+                {
+                    return new MasterStartState();
                 }
                 else
                 {
