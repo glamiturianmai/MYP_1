@@ -12,7 +12,7 @@ namespace MYP_MassageSalon.TG
         {
             get
             {
-                return "7134927139:AAGd-OgXUo2XhLIlWPoB0nnMEinHIPnfJTI";
+                return "6602031826:AAEEnjfIAw4FhRWLEIl_YNp3362UWTE1n54";
             }
         }
     }
