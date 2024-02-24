@@ -17,26 +17,29 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
     {
         
         private int _workId;
-        public AdminWorkerChooseState(int id)
+        
+        public AdminWorkerChooseState(int workid)
         {
-            _workId = id;        }
+            _workId = workid;
+            
+        }
 
         public override AbstractState ReceiveMessage(Update update)
         {
             if (update.Type == UpdateType.CallbackQuery)
             {
-                //int appId = 2;
+                
                 int workId = _workId;
                 var message = update.CallbackQuery.Data;
 
                 if (message == "delete")
                 {
-
-                    //return new StateClientDeleteAskApp(appId);
+                    
+                    return new AdminWorkerDeleteAskState(workId);
                 }
                 else if (message == "editQual")
                 {
-                   // return new StateClientEditAskApp(appId);
+                    return new AdminWorkerQualChooseState(workId);
                 }
                 else if (message == "back")
                 {
