@@ -20,9 +20,7 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
 
                 if (message == "see")
                 {
-                    return this;
-
-                    //return new AdminWorkerSeeState();
+                    return new AdminServiceSeeState();
                 }
                 else if (message == "add")
                 {
@@ -34,7 +32,7 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                 }
                 else if (message == "home")
                 {
-                    return new StartState();
+                    return new AdminStartState();
                 }
                 else return this;
 
