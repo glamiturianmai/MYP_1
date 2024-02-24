@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MYP_MassageSalon.BLL.Models.OutputModels
+namespace MYP_MassageSalon.BLL.Models.InputModels
 {
-    public class QualificationsOutputModel
+    public class QualifWorkerInputModels
     {
         public int Id { get; set; }
 
-        public string Qualification { get; set; }
-
+        public int QualificationId { get; set; }
     }
 }
