@@ -1,4 +1,5 @@
-﻿using Telegram.Bot;
+﻿using MYP_MassageSalon.TG.States.AdminApplication;
+using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
@@ -15,11 +16,11 @@ public class MasterStartState : AbstractState
 
       if (message == "services")
       {
-        return this;
+        return new MasterServiceSeeState();
       }
       else if (message == "appointments")
       {
-        return this;
+        return new MasterAppointmentSeeState();
       }
       else if (message == "qualification")
       {
@@ -44,11 +45,11 @@ public class MasterStartState : AbstractState
           },
           new InlineKeyboardButton[]
           {
-              new InlineKeyboardButton("Мои записи") {CallbackData="appointments"}
+            new InlineKeyboardButton("Мои записи") {CallbackData="appointments"}
           },
           new InlineKeyboardButton[]
           {
-              new InlineKeyboardButton("Мои квалификация") {CallbackData="qualification"}
+            new InlineKeyboardButton("Мои квалификация") {CallbackData="qualification"}
           }
         }
         );
