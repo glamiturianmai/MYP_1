@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MYP_MassageSalon.BLL.Models.InputModels;
 using MYP_MassageSalon.BLL.Models.OutputModels;
 using MYP_MassageSalon.DAL.Dtos;
 using System;
@@ -24,7 +25,9 @@ namespace MYP_MassageSalon.BLL.Mapping
             CreateMap<WorkServDTO, WorkServOutputModel>();
 
             CreateMap<SheduleIntervalDTO, IntervalsOutputModel>();
-
+            CreateMap<DeleteWorkerInputModel, WorkersDTO>();
+            CreateMap<QualifWorkerInputModels, WorkersDTO>();
+            CreateMap<QualificationDTO, QualificationsOutputModel>();
         }
     }
 }

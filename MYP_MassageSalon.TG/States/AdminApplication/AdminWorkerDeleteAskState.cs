@@ -1,6 +1,4 @@
-﻿using MYP_MassageSalon.BLL.Models.OutputModels;
-using MYP_MassageSalon.BLL;
-using MYP_MassageSalon.TG.States.ClientApplication;
+﻿using MYP_MassageSalon.TG.States.ClientApplication;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,68 +11,51 @@ using Telegram.Bot;
 
 namespace MYP_MassageSalon.TG.States.AdminApplication
 {
-    public class AdminWorkerChooseState : AbstractState
+    public class AdminWorkerDeleteAskState : AbstractState
     {
-        
         private int _workId;
-        
-        public AdminWorkerChooseState(int workid)
+        public AdminWorkerDeleteAskState(int id)
         {
-            _workId = workid;
-            
+            _workId = id;
+
         }
+
+
 
         public override AbstractState ReceiveMessage(Update update)
         {
             if (update.Type == UpdateType.CallbackQuery)
             {
-                
+
                 int workId = _workId;
                 var message = update.CallbackQuery.Data;
 
-                if (message == "delete")
+                if (message == "ok")
                 {
-                    
-                    return new AdminWorkerDeleteAskState(workId);
-                }
-                else if (message == "editQual")
-                {
-                    return new AdminWorkerQualChooseState(workId);
+                    return new AdminWorkerDeleteState(workId);
                 }
                 else if (message == "back")
                 {
-                    return new AdminWorkerSeeState();
+                    return new AdminWorkerChooseState(workId);
                 }
                 else if (message == "home")
                 {
                     return new StartState();
                 }
-                else
-                {
-                    return this;
-                }
 
             }
-            else
-            {
-                return this;
-            }
+            return this;
         }
 
         public override void SendMessage(long chatId)
         {
-
             InlineKeyboardMarkup markup = new InlineKeyboardMarkup(
                     new InlineKeyboardButton[][]
                     {
                         new InlineKeyboardButton[]
                         {
-                            new InlineKeyboardButton("Удалить") {CallbackData="delete"}
+                            new InlineKeyboardButton("Да, хочу удадить") {CallbackData="ok"}
 
-                        },
-                        new InlineKeyboardButton[]
-                        {
-                            new InlineKeyboardButton("Изменить квалификацию") {CallbackData="editQual"}
                         },
                         new InlineKeyboardButton[]
                         {
@@ -82,11 +63,11 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                         },
                         new InlineKeyboardButton[]
                         {
-                            new InlineKeyboardButton("домой") {CallbackData="home"}
+                            new InlineKeyboardButton("домой!") {CallbackData="home"}
                         }
                     }
                     );
-            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Что же вы хотите сделать?", replyMarkup: markup);
+            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"А вы уверены?", replyMarkup: markup);
         }
     }
 }

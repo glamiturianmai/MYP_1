@@ -3,6 +3,7 @@ using MYP_MassageSalon.BLL.Models.OutputModels;
 using MYP_MassageSalon.DAL.Dtos;
 using MYP_MassageSalon.DAL;
 using MYP_MassageSalon.BLL.Mapping;
+using MYP_MassageSalon.BLL.Models.InputModels;
 
 namespace MYP_MassageSalon.BLL
 {
@@ -76,6 +77,30 @@ namespace MYP_MassageSalon.BLL
             }
 
             return intervals;
+        }
+
+
+        public void DeleteWorkerMap(DeleteWorkerInputModel work)
+        {
+            WorkersDTO workMod = this._mapper.Map<WorkersDTO>(work);
+            this._workRepository.DeleteWorker(workMod);
+
+        }
+
+        public void SetWorkerQualificationMap(QualifWorkerInputModels work)
+        {
+            WorkersDTO workMod = this._mapper.Map<WorkersDTO>(work);
+            this._workRepository.SetQualificationWorker(workMod);
+
+        }
+
+        public List<QualificationsOutputModel> GetQualifWorker()
+        {
+            List<QualificationDTO> workDtos = _workRepository.GetQualifWorker();
+
+            var result = _mapper.Map<List<QualificationsOutputModel>>(workDtos);
+
+            return result;
         }
     }
 }

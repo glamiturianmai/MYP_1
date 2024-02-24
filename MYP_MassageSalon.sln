@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MYP_MassageSalon.BLL", "MYP
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MYP_MassageSalon.TG", "MYP_MassageSalon.TG\MYP_MassageSalon.TG.csproj", "{F566CDF3-6292-4061-AE28-BD901F22A56F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "not gitignor nastya please", "not gitignor nastya please\not gitignor nastya please.csproj", "{D9C2F50B-01BB-4E6F-938B-50FA6F0CA840}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F566CDF3-6292-4061-AE28-BD901F22A56F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F566CDF3-6292-4061-AE28-BD901F22A56F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F566CDF3-6292-4061-AE28-BD901F22A56F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9C2F50B-01BB-4E6F-938B-50FA6F0CA840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9C2F50B-01BB-4E6F-938B-50FA6F0CA840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9C2F50B-01BB-4E6F-938B-50FA6F0CA840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9C2F50B-01BB-4E6F-938B-50FA6F0CA840}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
