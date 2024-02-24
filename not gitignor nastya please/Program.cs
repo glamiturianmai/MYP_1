@@ -16,13 +16,9 @@ using MYP_MassageSalon.DAL.Dtos;
 
 
 ServiceClient q = new ServiceClient();
-ServiceIntputModel dto = new ServiceIntputModel();
-//m.Name = "aaa";
-//m.QualificationId = 1;
-//q.AddNewWorkerMap(m);
-dto.Name = "лимфодренажный массаж";
-dto.Price = 3800;
-dto.Time = 60;
-q.SetServiceMap(dto);
+DeleteServiceInputModel dto = new DeleteServiceInputModel();
+dto.Id = 10;
+q.DeleteServiceMap(dto);
+
 
 Console.ReadLine();
