@@ -1,4 +1,4 @@
-﻿using AutoMapper;
+using AutoMapper;
 using MYP_MassageSalon.BLL.Models.OutputModels;
 using MYP_MassageSalon.DAL.Dtos;
 using MYP_MassageSalon.DAL;
@@ -96,4 +96,19 @@ public class AppointmentClient
 
   }
 
+        public void AddAppointmentMap(AddAppClientIntputModel app)
+        {
+            AppointmentDTO appMod = this._mapper.Map<AppointmentDTO>(app);
+            this._appRepository.AddAppointment(appMod);
+
+        }
+
+        public void AddService_AppointmentMap(AddAppIntputModel app)
+        {
+            Service_AppointmentDTO appMod = this._mapper.Map<Service_AppointmentDTO>(app);
+            this._appRepository.AddService_Appointment(appMod);
+
+        }
+
+    }
 }

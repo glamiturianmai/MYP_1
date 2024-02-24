@@ -102,5 +102,12 @@ namespace MYP_MassageSalon.BLL
 
             return result;
         }
+
+        public void AddNewWorkerMap(WorkersAddInputModel work)
+        {
+            WorkersDTO workMod = this._mapper.Map<WorkersDTO>(work);
+            this._workRepository.AddNewWorker(workMod);
+
+        }
     }
 }

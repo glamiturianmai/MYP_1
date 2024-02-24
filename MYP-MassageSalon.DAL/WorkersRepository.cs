@@ -199,5 +199,15 @@ namespace MYP_MassageSalon.DAL
                 return connection.Query<QualificationDTO>(WorkersStoredProcedures.GetQualifWorker).ToList();
             }
         }
+
+        public void AddNewWorker(WorkersDTO client)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                connection.Query(WorkersStoredProcedures.AddNewWorker,
+                    new { client.Name, client.QualificationId },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }

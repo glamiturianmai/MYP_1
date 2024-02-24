@@ -62,6 +62,14 @@ namespace MYP_MassageSalon.DAL
                 return connection.Query<ServicesDTO>(ServiceStoredProcedures.GetAllServicesName).ToList();
             }
         }
+
+        public List<ServicesDTO> GetAllServices()
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                return connection.Query<ServicesDTO>(ServiceStoredProcedures.GetAllServices).ToList();
+            }
+        }
     }
 
     
