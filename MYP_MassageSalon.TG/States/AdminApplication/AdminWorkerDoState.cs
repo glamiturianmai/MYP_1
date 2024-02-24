@@ -25,7 +25,7 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                 }
                 else if (message == "add")
                 {
-                    return this;
+                    return new AdminWorkerAddNameState();
                 }
                 else if (message == "back")
                 {
