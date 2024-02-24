@@ -150,22 +150,6 @@ namespace MYP_MassageSalon.DAL
         }
 
 
-        //public List<WorkersDTO> GetWorkersByServiceId( int id)
-        //{
-        //    using (IDbConnection connection = new SqlConnection(Options.ConStr))
-        //    {
-        //        var parametrs = new
-        //        {
-        //            Id = id
-        //        };
-        //        return connection.Query<WorkersDTO>(
-        //            WorkersStoredProcedures.GetWorkersByServiceId,
-        //            parametrs).ToList();
-        //    }
-        //}
-
-
-
         public List<WorkersDTO> GetALLQualificationWorkers(int Id1)
         {
             using (IDbConnection connection = new SqlConnection(Options.ConStr))
@@ -188,6 +172,32 @@ namespace MYP_MassageSalon.DAL
             }
         }
 
+        public void DeleteWorker(WorkersDTO service) 
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                connection.Query(WorkersStoredProcedures.DeleteWorker,
+                    new { service.Id },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
 
+        public void SetQualificationWorker(WorkersDTO service)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                connection.Query(WorkersStoredProcedures.SetQualificationWorker,
+                    new { service.Id, service.QualificationId},
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public List<QualificationDTO> GetQualifWorker()
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                return connection.Query<QualificationDTO>(WorkersStoredProcedures.GetQualifWorker).ToList();
+            }
+        }
     }
 }

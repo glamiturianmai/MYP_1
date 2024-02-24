@@ -23,11 +23,11 @@ namespace MYP_MassageSalon.DAL.Dtos
 
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
-        public int QualificationId { get; set; }
+        public int? QualificationId { get; set; }
 
-        public bool IsDeleted { get; set; }
+        public bool? IsDeleted { get; set; }
 
         public int? WorkIntervalId { get; set; }
 
