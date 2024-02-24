@@ -10,6 +10,7 @@ using MYP_MassageSalon.DAL;
 using MYP_MassageSalon.DAL.Dtos;
 using MYP_MassageSalon.DAL.IRepositories;
 using AutoMapper;
+using MYP_MassageSalon.BLL.Models.InputModels;
 
 
 namespace MYP_MassageSalon.BLL
@@ -37,7 +38,12 @@ namespace MYP_MassageSalon.BLL
 
             return result;
         }
+        public void SetServiceMap(ServiceIntputModel work)
+        {
+            ServicesDTO workMod = this._mapper.Map<ServicesDTO>(work);
+            this._serviceRepository.SetService(workMod);
 
+        }
 
     }
 }
