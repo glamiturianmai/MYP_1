@@ -8,7 +8,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 IntervalIntputModel dto = new IntervalIntputModel();
 WorkerClient r = new WorkerClient();
 
- DateTime date1 = new DateTime(2024, 2, 23, 18, 15, 00);
+ DateTime date1 = new DateTime(2024, 2, 23, 19, 45, 00);
 dto.Date = date1;
 dto.WorkerId = 5;
 r.SetScheduleIntervalMap(dto);
