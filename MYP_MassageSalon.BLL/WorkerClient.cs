@@ -71,6 +71,10 @@ namespace MYP_MassageSalon.BLL
                     if (dates[i].Id + count - 1 == dates[end_ind].Id
                         && day1.Equals(day2))
                     {
+                        if (!intervals.ContainsKey(day1))
+                        {
+                            intervals.Add(day1, new List<IntervalsOutputModel>());
+                        }
                         intervals[day1].Add(dates[i]);
                     }
                 }
@@ -116,5 +120,26 @@ namespace MYP_MassageSalon.BLL
             this._intRepository.SetScheduleInterval(workMod);
 
         }
+
+        //public List<QualificationsOutputModel> GetQualifWorker()
+        //{
+        //    List<QualificationDTO> workDtos = _workRepository.GetQualifWorker();
+
+        //    var result = _mapper.Map<List<QualificationsOutputModel>>(workDtos);
+
+        //    return result;
+        //}
+
+        public List<WorkerINameOutputModel> GetWorkerNameByIdMap(WorkerIdInputModel work)
+        {
+            WorkersDTO workMod = this._mapper.Map<WorkersDTO>(work);
+            List<WorkersDTO> w = this._workRepository.GetWorkerNameById(workMod);
+
+
+            var result = _mapper.Map<List<WorkerINameOutputModel>>(w);
+
+            return result;
+        }
+
     }
 }

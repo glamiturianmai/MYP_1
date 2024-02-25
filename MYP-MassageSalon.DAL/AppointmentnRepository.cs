@@ -29,13 +29,14 @@ namespace MYP_MassageSalon.DAL
 
 
 
-        public void AddAppointment(AppointmentDTO appointment) //ГЛОБАЛЬНО добавляем заявку (заводим по id клиента)
+        public List<AppointmentDTO> AddAppointment(AppointmentDTO appointment) //ГЛОБАЛЬНО добавляем заявку (заводим по id клиента)
         {
             using (IDbConnection connection = new SqlConnection(Options.ConStr))
             {
-                connection.Query(AppointmentStoredProcedures.AddAppointment,
+                return connection.Query<AppointmentDTO>(AppointmentStoredProcedures.AddAppointment,
                     new { appointment.ClientId},
-                    commandType: CommandType.StoredProcedure); //тип подключения ??
+                    commandType: CommandType.StoredProcedure).ToList(); //тип подключения ??
+              
             }
         }
 

@@ -37,5 +37,25 @@ namespace MYP_MassageSalon.DAL
                     parametrs).ToList();
             }
         }
+
+        public void SetAppointmnetInInterval(int intervalId, int appId)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                connection.Query(ScheduleIntervalStoredProcedures.SetAppointmnetInInterval,
+                    new { intervalId, appId },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public List<SheduleIntervalDTO> GetIntervalDateById(SheduleIntervalDTO service)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                return connection.Query<SheduleIntervalDTO>(ScheduleIntervalStoredProcedures.GetIntervalDateById,
+                    new { service.Id },
+                    commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
     }
 }
