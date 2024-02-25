@@ -19,6 +19,10 @@ namespace MYP_MassageSalon.BLL.Mapping
             CreateMap<ServiceIntputModel, ServicesDTO>();
             CreateMap<ServicesDTO, ServiceAdminOutputModel>();
             CreateMap<DeleteServiceInputModel, ServicesDTO>();
+
+            CreateMap<ServicesDTO, ServiceNameOutputModel>();
+            CreateMap<ServiceIdInputModel, ServicesDTO>();
+
         }
     }
 }

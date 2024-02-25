@@ -23,15 +23,17 @@ public class AppointmentClient
         var config = new MapperConfiguration(cfg =>
         {
             cfg.AddProfile(new AppointmentMappingProfile());
+            cfg.AddProfile(new ClientMappingProfile());
+            cfg.AddProfile(new ServiceMappingProfile());
         });
         _mapper = new Mapper(config);
     }
 
-    public List<AppointmentsOutputModel> GetAllAppointmentsMap()
+    public List<WorkersAppOutputModel> GetAllAppointmentsMap()
     {
         List<WorkersDTO> appDtos = _appRepository.GetAllAppointments();
 
-        var result = _mapper.Map<List<AppointmentsOutputModel>>(appDtos);
+        var result = _mapper.Map<List<WorkersAppOutputModel>>(appDtos);
 
         return result;
     }
@@ -83,11 +85,11 @@ public class AppointmentClient
 
 
 
-    public List<AppointmentsAdminOutputModel> GetAllAppointmentsAdminMap()
+    public List<WorkersAppOutputModel> GetAllAppointmentsAdminMap()
     {
         List<WorkersDTO> appDtos = _appRepository.GetAllAppointments();
 
-        var result = _mapper.Map<List<AppointmentsAdminOutputModel>>(appDtos);
+        var result = _mapper.Map<List<WorkersAppOutputModel>>(appDtos);
 
         return result;
     }
@@ -143,5 +145,16 @@ public class AppointmentClient
         {
             _scheduleIntervalRepository.SetAppointmnetInInterval(intervalId + i, appId);
         }
+    }
+
+    public List<IntervalIdOutputModel> GetIntervalDateByIdMap(IntervalIdInputModel work)
+    {
+        SheduleIntervalDTO workMod = this._mapper.Map<SheduleIntervalDTO>(work);
+        List<SheduleIntervalDTO> w = this._scheduleIntervalRepository.GetIntervalDateById(workMod);
+
+
+        var result = _mapper.Map<List<IntervalIdOutputModel>>(w);
+
+        return result;
     }
 }

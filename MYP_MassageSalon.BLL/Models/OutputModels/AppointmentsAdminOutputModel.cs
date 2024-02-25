@@ -15,6 +15,8 @@ namespace MYP_MassageSalon.BLL.Models.OutputModels
 
         public DateTime Date { get; set; } 
         public ClientOutputModel Username { get; set; }
-        public ServiceOutputModel ServiceName { get; set; } 
+        public ServiceOutputModel ServiceName { get; set; }
+
+        public int? AppId { get; set; }
     }
 }

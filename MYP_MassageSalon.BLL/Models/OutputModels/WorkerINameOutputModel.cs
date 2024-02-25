@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MYP_MassageSalon.BLL.Models.InputModels
+namespace MYP_MassageSalon.BLL.Models.OutputModels
 {
-    public class DeleteAppIntputModel
+    public class WorkerINameOutputModel
     {
-        public int AppId { get; set; }
+        public string Name { get; set; }
     }
 }

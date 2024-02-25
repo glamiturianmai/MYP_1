@@ -32,6 +32,15 @@ namespace MYP_MassageSalon.BLL.Mapping
 
             CreateMap<IntervalIntputModel, IntervalPrDTO>();
             CreateMap<WorkersDTO, WorkersModel>();
+
+            CreateMap<WorkerIdInputModel, WorkersDTO>();
+            CreateMap<WorkersDTO, WorkerINameOutputModel>();
+
+            CreateMap<WorkerAppointmentsDTO, WorkerAppointmentsOutputModel>();
+            CreateMap<WorkersDTO, WorkersAppOutputModel>();
+
+
+            CreateMap<WorkersDTO, AppointmentsAdminOutputModel>();
         }
     }
 }

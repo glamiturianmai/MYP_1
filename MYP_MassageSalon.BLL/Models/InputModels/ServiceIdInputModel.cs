@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MYP_MassageSalon.BLL.Models.InputModels
 {
-    public class DeleteAppIntputModel
+    public class ServiceIdInputModel
     {
-        public int AppId { get; set; }
+        public int Id { get; set; }
     }
 }

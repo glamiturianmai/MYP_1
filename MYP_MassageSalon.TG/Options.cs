@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace MYP_MassageSalon.TG
 {
-    public class Options
+  public class Options
+  {
+    public static string ConStrTG
     {
-        public static string ConStrTG
-        {
             get
             {
                 return Environment.GetEnvironmentVariable("TG_Bot_MYP");
             }
-        }
-    }
+    }   
+  }
 }
