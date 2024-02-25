@@ -20,11 +20,7 @@ public class MasterStartState : AbstractState
       }
       else if (message == "appointments")
       {
-        return new MasterAppointmentSeeState();
-      }
-      else if (message == "qualification")
-      {
-        return this;
+         return new MasterAppointmentSeeState();
       }
       else
       {
@@ -46,10 +42,6 @@ public class MasterStartState : AbstractState
           new InlineKeyboardButton[]
           {
             new InlineKeyboardButton("Мои записи") {CallbackData="appointments"}
-          },
-          new InlineKeyboardButton[]
-          {
-            new InlineKeyboardButton("Мои квалификация") {CallbackData="qualification"}
           }
         }
         );
