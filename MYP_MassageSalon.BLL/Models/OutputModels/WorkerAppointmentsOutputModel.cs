@@ -4,20 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MYP_MassageSalon.DAL.Dtos
+namespace MYP_MassageSalon.BLL.Models.OutputModels
 {
-    public class WorkerAppointmentsDTO 
+    public class WorkerAppointmentsOutputModel
     {
-        public DateTime Date { get; set; } 
+        public DateTime Date { get; set; }
 
         public string Username { get; set; } //клиента
 
-        public int IpInf { get; set; } 
+        public int IpInf { get; set; }
         public string ServiceName { get; set; }
-
-        //public ServicesDTO? ServiceName { get; set; }
-
-        //public ClientsDTO? Username { get; set; }
 
         public int? AppId { get; set; }
     }
