@@ -42,6 +42,10 @@ namespace MYP_MassageSalon.DAL.Dtos
         public List<IntervalWorkPrDTO>? WorkIntervals { get; set; }
 
         public List<WorkServDTO>? WorkServ { get; set; }
+
+        public ServicesDTO? ServiceName { get; set; }
+
+        public ClientsDTO? Username { get; set; }
     }
 }
    
