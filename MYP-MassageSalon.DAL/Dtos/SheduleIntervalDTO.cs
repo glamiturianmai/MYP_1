@@ -9,7 +9,7 @@ namespace MYP_MassageSalon.DAL.Dtos
 {
     public class SheduleIntervalDTO
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         public DateTime Date { get; set; }
 

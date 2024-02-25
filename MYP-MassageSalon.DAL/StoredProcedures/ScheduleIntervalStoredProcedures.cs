@@ -13,5 +13,7 @@ namespace MYP_MassageSalon.DAL.StoredProcedures
         public const string GetScheduleIntervalsForWorkers = "GetScheduleIntervalsForWorkers";
 
         public const string SetAppointmnetInInterval = "SetAppointmnetInInterval";
+
+        public const string GetIntervalDateById = "GetIntervalDateById";
     }
 }

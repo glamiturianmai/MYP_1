@@ -70,6 +70,17 @@ namespace MYP_MassageSalon.DAL
                 return connection.Query<ServicesDTO>(ServiceStoredProcedures.GetAllServices).ToList();
             }
         }
+
+
+        public List<ServicesDTO> GetServiceNameById(ServicesDTO service)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                return connection.Query<ServicesDTO>(ServiceStoredProcedures.GetServiceNameById,
+                    new { service.Id },
+                    commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
     }
 
     

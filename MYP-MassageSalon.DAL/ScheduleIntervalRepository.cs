@@ -47,5 +47,15 @@ namespace MYP_MassageSalon.DAL
                     commandType: CommandType.StoredProcedure);
             }
         }
+
+        public List<SheduleIntervalDTO> GetIntervalDateById(SheduleIntervalDTO service)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                return connection.Query<SheduleIntervalDTO>(ScheduleIntervalStoredProcedures.GetIntervalDateById,
+                    new { service.Id },
+                    commandType: CommandType.StoredProcedure).ToList();
+            }
+        }
     }
 }

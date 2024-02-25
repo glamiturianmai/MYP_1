@@ -63,5 +63,16 @@ namespace MYP_MassageSalon.BLL
 
         }
 
+        public List<ServiceNameOutputModel> GetServiceNameByIdMap(ServiceIdInputModel work)
+        {
+            ServicesDTO workMod = this._mapper.Map<ServicesDTO>(work);
+            List<ServicesDTO> w = this._serviceRepository.GetServiceNameById(workMod);
+
+
+            var result = _mapper.Map<List<ServiceNameOutputModel>>(w);
+
+            return result;
+        }
+
     }
 }
