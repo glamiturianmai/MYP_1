@@ -12,6 +12,23 @@ namespace MYP_MassageSalon.DAL
 {
     public class AppointmentnRepository: IAppointmentnRepository
     {
+
+        public int SetAppointment(Service_AppointmentDTO serviceappointment) //добавляем заявку по услуге 
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                connection.Query(AppointmentStoredProcedures.SetAppointment,
+                    new { serviceappointment.ClientId, serviceappointment.WorkerId, serviceappointment.ServiceId, serviceappointment.ServicePrice },
+                    commandType: CommandType.StoredProcedure);
+
+                return serviceappointment.AppId;
+            }
+        }
+
+
+
+
+
         public void AddAppointment(AppointmentDTO appointment) //ГЛОБАЛЬНО добавляем заявку (заводим по id клиента)
         {
             using (IDbConnection connection = new SqlConnection(Options.ConStr))
@@ -26,9 +43,11 @@ namespace MYP_MassageSalon.DAL
         {
             using (IDbConnection connection = new SqlConnection(Options.ConStr))
             {
-                connection.Query(AppointmentStoredProcedures.AddService_Appointment,
-                    new { serviceappointment.ServicesId, serviceappointment.AppointmentId, serviceappointment.WorkerId, serviceappointment.Price },
-                    commandType: CommandType.StoredProcedure); 
+                 connection.Query(AppointmentStoredProcedures.AddService_Appointment,
+                    new { serviceappointment.ServiceId, serviceappointment.WorkerId, serviceappointment.ServicePrice},
+                    commandType: CommandType.StoredProcedure);
+
+                
             }
         }
 

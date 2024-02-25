@@ -109,5 +109,12 @@ namespace MYP_MassageSalon.BLL
             this._workRepository.AddNewWorker(workMod);
 
         }
+
+        public void SetScheduleIntervalMap(IntervalIntputModel work)
+        {
+            IntervalPrDTO workMod = this._mapper.Map<IntervalPrDTO>(work);
+            this._intRepository.SetScheduleInterval(workMod);
+
+        }
     }
 }

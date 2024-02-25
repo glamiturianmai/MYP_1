@@ -9,13 +9,18 @@ namespace MYP_MassageSalon.DAL.Dtos
 {
     public class Service_AppointmentDTO
     {
-        public int ServicesId { get; set; }
-
-        public int AppointmentId { get; set; }
+        public int? ClientId { get; set; }
 
         public int WorkerId { get; set; }
+        public int ServiceId { get; set; }
 
-        public int Price { get; set; }
+        public int ServicePrice { get; set; }
+
+        public int AppId { get; set; }
+
+        
+
+        
 
         
     }
