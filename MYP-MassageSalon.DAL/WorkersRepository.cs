@@ -1,4 +1,4 @@
-﻿using Dapper;
+using Dapper;
 using Microsoft.Data.SqlClient;
 using MYP_MassageSalon.DAL.Dtos;
 using MYP_MassageSalon.DAL.IRepositories;
