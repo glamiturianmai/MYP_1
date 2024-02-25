@@ -16,10 +16,13 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
     {
         private List<AppointmentsOutputModel> _appTG;
         private int _appId;
-        public StateClientDoWithApp(int id)
+        private int _clientId;
+
+        public StateClientDoWithApp(int id, int clientId)
         {
             _appId =id;
             _appTG = new AppointmentClient().GetClientsAppointmentsMap(_appId);
+            _clientId = clientId;
         }
 
         public override AbstractState ReceiveMessage(Update update)
@@ -33,11 +36,11 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
                 if (message == "Cancel")
                 {
 
-                    return new StateClientDeleteAskApp(appId);
+                    return new StateClientDeleteAskApp(appId, _clientId);
                 }
                 else if (message == "Edit")
                 {
-                    return new StateClientEditAskApp(appId);
+                    return new StateClientEditAskApp(appId, _clientId);
                 }
                 else if (message == "back")
                 {

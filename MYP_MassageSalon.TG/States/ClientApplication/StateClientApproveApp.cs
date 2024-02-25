@@ -1,27 +1,57 @@
-﻿using Telegram.Bot;
+﻿using MYP_MassageSalon.BLL;
+using MYP_MassageSalon.BLL.Models.InputModels;
+using Telegram.Bot;
 using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace MYP_MassageSalon.TG.States.ClientApplication
 {
     public class StateClientApproveApp : AbstractState
     {
-        private int _serviceId;
-        private int _worker_id;
-        private int _intervalId;
-        private int _price;
+        Appointment _app;
 
-        public StateClientApproveApp(int serviceId, int workerId, int intervalId, int price)
+        private string _workerName;
+        private string _serviceName;
+        private string _intervalDate;
+
+        public StateClientApproveApp(Appointment app)
         {
-            _intervalId = intervalId;
-            _serviceId = serviceId;
-            _worker_id = workerId;
-            _price = price;
+            _app = app;
+
+            InitNames();
+        }
+
+        private void InitNames()
+        {
+            AppointmentClient ap = new AppointmentClient();
+            IntervalIdInputModel im = new IntervalIdInputModel { Id = _app.IntervalId };
+            _intervalDate = ap.GetIntervalDateByIdMap(im)[0].Date.ToString("g");
+
+            ServiceClient sc = new ServiceClient();
+            ServiceIdInputModel sm = new ServiceIdInputModel { Id = _app.ServiceId };
+            _serviceName = sc.GetServiceNameByIdMap(sm)[0].Name;
+
+            WorkerClient wc = new WorkerClient();
+            WorkerIdInputModel wm = new WorkerIdInputModel { Id = _app.WorkerId };
+            _workerName = wc.GetWorkerNameByIdMap(wm)[0].Name;
         }
 
         public override AbstractState ReceiveMessage(Update update)
         {
-            throw new NotImplementedException();
+            if (update.Type == UpdateType.CallbackQuery)
+            {
+                string m = update.CallbackQuery.Data;
+                if (m == "Discard")
+                {
+                    return new StartState();
+                }
+                else if (m == "ApproveApp")
+                {
+                    return new StateClientAppDone(_app);
+                }
+            }
+            return this;
         }
 
         public override void SendMessage(long chatId)
@@ -40,9 +70,10 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
                     }
                 }
                 );
+
             SingletoneStorage.GetStorage().Client.SendTextMessageAsync(
                 chatId, 
-                $"Подвтердите запись \n Мастер: \n Услуга: \n Дата и время: \n Стоимость: ", 
+                $"Подвтердите запись \n Мастер: {_workerName}\n Услуга: {_serviceName} \n Дата и время: {_intervalDate}\n Стоимость: {_app.Price}", 
                 replyMarkup: markup);
         }
     }

@@ -10,15 +10,13 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
     public class StateClinetSetWorker : AbstractState
     {
         private List<WorkersOutputModel> _workersTG;
-        private int _serviceId;
-        private int _serviceDuration;
+        Appointment _app;
 
-        public StateClinetSetWorker(int serviceId, int serviceDuration)
+        public StateClinetSetWorker(Appointment app)
         {
-            _serviceId = serviceId;
-            _serviceDuration = serviceDuration;
+            _app = app;
 
-            _workersTG = new WorkerClient().GetWorkersByServiceIdMap(serviceId);
+            _workersTG = new WorkerClient().GetWorkersByServiceIdMap(_app.ServiceId);
         }
 
         public override AbstractState ReceiveMessage(Update update)
@@ -28,12 +26,14 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
             {
                 if (update.CallbackQuery.Data == "/back")
                 {
-                    return new StateClientSetService();
+                    return new StateClientSetService(_app.ClientId);
                 }
                 else
                 {
-                    int workerId = Int32.Parse(update.CallbackQuery.Data);
-                    return new StateClientSetData(_serviceId, workerId, _serviceDuration);
+                    int m = Int32.Parse(update.CallbackQuery.Data);
+                    _app.WorkerId = _workersTG[m].Id;
+                    _app.Price = _workersTG[m].WorkServ[0].Price;
+                    return new StateClientSetData(_app);
                 }
             }
             return this;
@@ -44,13 +44,14 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
             List<List<InlineKeyboardButton>> keys = new List<List<InlineKeyboardButton>>();
 
             int count = 0;
-            foreach (var w in _workersTG)
+            for (int i = 0; i < _workersTG.Count; i++)
             {
+                var w = _workersTG[i];
                 keys.Add(new List<InlineKeyboardButton>());
                 keys[keys.Count - 1].Add(new InlineKeyboardButton(
                     $"{w.Name}, {w.WorkServ[0].QualificationName}, {w.WorkServ[0].Price} рублей"
                     ) 
-                    { CallbackData = w.Id.ToString() }
+                    { CallbackData = i.ToString() }
                 ); 
                 count++;
             }

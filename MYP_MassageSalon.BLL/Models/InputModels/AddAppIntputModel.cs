@@ -8,10 +8,11 @@ namespace MYP_MassageSalon.BLL.Models.InputModels
 {
     public class AddAppIntputModel
     {
-        public int ServicesId { get; set;}
-        public int AppointmentId { get; set; }
+        public int? ClientId { get; set; }
+        public int ServiceId { get; set;}
+        public int AppId { get; set; }
         public int WorkerId { get; set; }
-        public int Price { get; set; }
+        public decimal ServicePrice { get; set; }
 
     }
 }

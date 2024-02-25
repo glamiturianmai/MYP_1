@@ -61,7 +61,7 @@ namespace MYP_MassageSalon.TG.States
                     return new StateClientSeeApp(_clientId[0].Id);
                 } else if (message == "SetApp")
                 {
-                    return new StateClientSetService();
+                    return new StateClientSetService(_clientId[0].Id);
                 }
             }
             return this;

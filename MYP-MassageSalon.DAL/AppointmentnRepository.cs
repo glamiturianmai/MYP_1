@@ -45,7 +45,7 @@ namespace MYP_MassageSalon.DAL
             using (IDbConnection connection = new SqlConnection(Options.ConStr))
             {
                  connection.Query(AppointmentStoredProcedures.AddService_Appointment,
-                    new { serviceappointment.ServiceId, serviceappointment.WorkerId, serviceappointment.ServicePrice},
+                    new { serviceappointment.ServiceId, serviceappointment.AppId, serviceappointment.WorkerId, serviceappointment.ServicePrice},
                     commandType: CommandType.StoredProcedure);
 
                 

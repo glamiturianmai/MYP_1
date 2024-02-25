@@ -1,28 +1,38 @@
 ﻿using MYP_MassageSalon.BLL.Models.OutputModels;
 using Telegram.Bot;
 using Telegram.Bot.Types;
+using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
 
 namespace MYP_MassageSalon.TG.States.ClientApplication
 {
     public class StateClientSetTime : AbstractState
     {
-        private int _serviceId;
-        private int _workerId;
-        private int _serviceDuration;
-
+        Appointment _app;
         private List<IntervalsOutputModel> _timeTG;
 
-        public StateClientSetTime(int serviceId, int workerId, int serviceDuration, List<IntervalsOutputModel> timeTG)
+        public StateClientSetTime(Appointment app, List<IntervalsOutputModel> timeTG)
         {
-            _serviceId = serviceId;
-            _workerId = workerId;
-            _serviceDuration = serviceDuration;
+            _app = app;
             _timeTG = timeTG;
         }
 
         public override AbstractState ReceiveMessage(Update update)
         {
+
+            if (update.Type == UpdateType.CallbackQuery)
+            {
+                string m = update.CallbackQuery.Data;
+                if (m == "/back")
+                {
+                    return new StateClientSetData(_app);
+                }
+                else
+                {
+                    _app.IntervalId = Int32.Parse(m);
+                    return new StateClientApproveApp(_app);
+                }
+            }
             return this;
         }
 
@@ -41,7 +51,7 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
             }
             keys.Add(new List<InlineKeyboardButton>()
             {
-                new InlineKeyboardButton("Вернуться к выбору услуги ->") { CallbackData = "/back"}
+                new InlineKeyboardButton("Вернуться к выбору даты ->") { CallbackData = "/back"}
             });
 
             InlineKeyboardMarkup markup = new InlineKeyboardMarkup(keys);
