@@ -121,5 +121,25 @@ namespace MYP_MassageSalon.BLL
 
         }
 
+        //public List<QualificationsOutputModel> GetQualifWorker()
+        //{
+        //    List<QualificationDTO> workDtos = _workRepository.GetQualifWorker();
+
+        //    var result = _mapper.Map<List<QualificationsOutputModel>>(workDtos);
+
+        //    return result;
+        //}
+
+        public List<WorkerINameOutputModel> GetWorkerNameByIdMap(WorkerIdInputModel work)
+        {
+            WorkersDTO workMod = this._mapper.Map<WorkersDTO>(work);
+            List<WorkersDTO> w = this._workRepository.GetWorkerNameById(workMod);
+
+
+            var result = _mapper.Map<List<WorkerINameOutputModel>>(w);
+
+            return result;
+        }
+
     }
 }

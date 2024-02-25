@@ -25,6 +25,10 @@ namespace MYP_MassageSalon.BLL.Mapping
                 .ForMember(a=>a.WorksApp, o=>o.MapFrom(b=>b.ClientApp));
             CreateMap<AddAppIntputModel, Service_AppointmentDTO>();
             CreateMap<AddAppClientIntputModel, AppointmentDTO>();
+
+            CreateMap<SheduleIntervalDTO, IntervalIdOutputModel>();
+            CreateMap<IntervalIdInputModel, SheduleIntervalDTO>();
+
         }
     }
 }

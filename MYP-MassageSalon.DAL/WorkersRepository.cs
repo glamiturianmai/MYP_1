@@ -210,11 +210,13 @@ namespace MYP_MassageSalon.DAL
             }
         }
 
-        public List<WorkersDTO> GetWorkerNameById(int id1)
+        public List<WorkersDTO> GetWorkerNameById(WorkersDTO service)
         {
             using (IDbConnection connection = new SqlConnection(Options.ConStr))
             {
-                return connection.Query<WorkersDTO>(WorkersStoredProcedures.GetWorkerNameById).ToList();
+                return connection.Query<WorkersDTO>(WorkersStoredProcedures.GetWorkerNameById,
+                    new { service.Id },
+                    commandType: CommandType.StoredProcedure).ToList();
             }
         }
     }

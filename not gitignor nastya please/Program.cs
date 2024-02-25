@@ -5,8 +5,17 @@ using MYP_MassageSalon.DAL;
 using MYP_MassageSalon.DAL.Dtos;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-//Service_AppointmentDTO dto = new Service_AppointmentDTO();
-//AppointmentnRepository r = new AppointmentnRepository();
+WorkersDTO dto = new WorkersDTO();
+WorkersRepository r = new WorkersRepository();
+dto.Id = 5;
+var a = r.GetWorkerNameById(dto);
+
+AppointmentClient q = new AppointmentClient();
+IntervalIdInputModel dt = new IntervalIdInputModel();
+List<IntervalIdOutputModel> m = new List<IntervalIdOutputModel>();
+dt.Id = 2;
+
+m = q.GetIntervalDateByIdMap(dt);
 
 //DateTime date1 = new DateTime(2024, 2, 23, 19, 45, 00);
 //dto.ServicePrice=1234;

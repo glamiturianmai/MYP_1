@@ -144,4 +144,15 @@ public class AppointmentClient
             _scheduleIntervalRepository.SetAppointmnetInInterval(intervalId + i, appId);
         }
     }
+
+    public List<IntervalIdOutputModel> GetIntervalDateByIdMap(IntervalIdInputModel work)
+    {
+        SheduleIntervalDTO workMod = this._mapper.Map<SheduleIntervalDTO>(work);
+        List<SheduleIntervalDTO> w = this._scheduleIntervalRepository.GetIntervalDateById(workMod);
+
+
+        var result = _mapper.Map<List<IntervalIdOutputModel>>(w);
+
+        return result;
+    }
 }
