@@ -23,15 +23,17 @@ public class AppointmentClient
         var config = new MapperConfiguration(cfg =>
         {
             cfg.AddProfile(new AppointmentMappingProfile());
+            cfg.AddProfile(new ClientMappingProfile());
+            cfg.AddProfile(new ServiceMappingProfile());
         });
         _mapper = new Mapper(config);
     }
 
-    public List<AppointmentsOutputModel> GetAllAppointmentsMap()
+    public List<WorkersAppOutputModel> GetAllAppointmentsMap()
     {
         List<WorkersDTO> appDtos = _appRepository.GetAllAppointments();
 
-        var result = _mapper.Map<List<AppointmentsOutputModel>>(appDtos);
+        var result = _mapper.Map<List<WorkersAppOutputModel>>(appDtos);
 
         return result;
     }
