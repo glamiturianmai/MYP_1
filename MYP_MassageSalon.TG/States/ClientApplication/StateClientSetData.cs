@@ -1,11 +1,5 @@
 ﻿using MYP_MassageSalon.BLL;
 using MYP_MassageSalon.BLL.Models.OutputModels;
-using MYP_MassageSalon.DAL.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
@@ -35,13 +29,14 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
         {
             if (update.Type == UpdateType.CallbackQuery)
             {
-                if (update.CallbackQuery.Data == "/back")
+                string m = update.CallbackQuery.Data;
+                if (m == "/back")
                 {
                     return new StateClinetSetWorker(_serviceId, _serviceDuration);
                 }
                 else
                 {
-                    return this;
+                    return new StateClientSetTime(_serviceId, _workerId, _serviceDuration, _datesTG[m]);
                 }
             }
             return this;
