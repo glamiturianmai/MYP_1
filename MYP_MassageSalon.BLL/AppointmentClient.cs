@@ -11,12 +11,14 @@ public class AppointmentClient
 {
     private AppointmentnRepository _appRepository;
     private ClientRepository _cliRepository;
+    private ScheduleIntervalRepository _scheduleIntervalRepository;
     private Mapper _mapper;
 
     public AppointmentClient()
     {
         _appRepository = new AppointmentnRepository();
         _cliRepository = new ClientRepository();
+        _scheduleIntervalRepository = new ScheduleIntervalRepository();
 
         var config = new MapperConfiguration(cfg =>
         {
@@ -97,11 +99,11 @@ public class AppointmentClient
 
     }
 
-    public void AddAppointmentMap(AddAppClientIntputModel app)
+    public int AddAppointmentMap(AddAppClientIntputModel app)
     {
         AppointmentDTO appMod = this._mapper.Map<AppointmentDTO>(app);
-        this._appRepository.AddAppointment(appMod);
 
+        return this._appRepository.AddAppointment(appMod)[0].Id;
     }
 
     public void AddService_AppointmentMap(AddAppIntputModel app)
@@ -111,5 +113,35 @@ public class AppointmentClient
 
     }
 
+    public int intervalDuration = 15;
+    public void SetAppointment(int clientId, int serviceId, int workerId, 
+                                int serviceDuration, int intervalId, int price)
+    {
+        var a = new AddAppClientIntputModel
+        {
+            ClientId = clientId
+        };
+        int appId = AddAppointmentMap(a);
 
+        var serviceInApp = new AddAppIntputModel
+        {
+            ServicesId = serviceId,
+            WorkerId = workerId,
+            AppointmentId = appId,
+            Price = price,
+        };
+        AddService_AppointmentMap(serviceInApp);
+
+        SetIntervals(intervalId, serviceDuration, appId);
+    }
+
+    public void SetIntervals(int intervalId, int serviceDuration, int appId )
+    {
+        int numberOfIntervals = serviceDuration / intervalDuration;
+        
+        for (int i = 0; i <  numberOfIntervals; i++)
+        {
+            _scheduleIntervalRepository.SetAppointmnetInInterval(intervalId + i, appId);
+        }
+    }
 }

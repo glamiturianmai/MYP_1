@@ -37,5 +37,15 @@ namespace MYP_MassageSalon.DAL
                     parametrs).ToList();
             }
         }
+
+        public void SetAppointmnetInInterval(int intervalId, int appId)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                connection.Query(ScheduleIntervalStoredProcedures.SetAppointmnetInInterval,
+                    new { intervalId, appId },
+                    commandType: CommandType.StoredProcedure);
+            }
+        }
     }
 }
