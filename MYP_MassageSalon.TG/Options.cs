@@ -10,20 +10,10 @@ namespace MYP_MassageSalon.TG
   {
     public static string ConStrTG
     {
-<<<<<<< HEAD
-        public static string ConStrTG
-        {
             get
             {
                 return Environment.GetEnvironmentVariable("TG_Bot_MYP");
             }
-        }
-=======
-      get
-      {
-        return Environment.GetEnvironmentVariable("TG_Bot_MYP");
-      }
->>>>>>> MYP_1/add-master-tg-bot
-    }
+    }   
   }
 }
