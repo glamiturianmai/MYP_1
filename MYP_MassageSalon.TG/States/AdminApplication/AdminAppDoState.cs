@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MYP_MassageSalon.TG.States;
-using MYP_MassageSalon.TG.States.ClientApplication;
 using Telegram.Bot.Types.Enums;
-using Telegram.Bot.Types;
 using Telegram.Bot.Types.ReplyMarkups;
+using Telegram.Bot.Types;
 using Telegram.Bot;
 
 namespace MYP_MassageSalon.TG.States.AdminApplication
 {
-    public class AdminStartState : AbstractState
+    public class AdminAppDoState : AbstractState
     {
         public override AbstractState ReceiveMessage(Update update)
         {
@@ -20,28 +18,27 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
             {
                 var message = update.CallbackQuery.Data;
 
-                if (message == "workers")
+                if (message == "see")
                 {
-
-                    return new AdminWorkerDoState();
+                    return new AdminAppSeeState();
                 }
-                else if (message == "services")
+                else if (message == "add")
                 {
-                    return new AdminServiceDoState();
+                    return this;
                 }
-                else if (message == "appointments")
+                else if (message == "back")
                 {
-                    return new AdminAppDoState();
+                    return new AdminStartState();
                 }
-                else if (message == "sheduleinterval")
+                else if (message == "home")
                 {
-                    return new AdminSetSheduleState();
+                    return new StartState();
                 }
                 else return this;
 
             }
             else return this;
-            
+
         }
 
         public override void SendMessage(long chatId)
@@ -54,25 +51,24 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                 {
                         new InlineKeyboardButton[]
                         {
-                            new InlineKeyboardButton("Мастера") {CallbackData="workers"}
+                            new InlineKeyboardButton("Наши заявки") {CallbackData="see"}
 
                         },
                         new InlineKeyboardButton[]
                         {
-                            new InlineKeyboardButton("Услуги") {CallbackData="services"}
+                            new InlineKeyboardButton("Добавить") {CallbackData="add"}
                         },
                         new InlineKeyboardButton[]
                         {
-                            new InlineKeyboardButton("Записи") {CallbackData="appointments"}
+                            new InlineKeyboardButton("назад!") {CallbackData="back"}
                         },
                         new InlineKeyboardButton[]
                         {
-                            new InlineKeyboardButton("ДЛЯ НАСТИ") {CallbackData="sheduleinterval"}
+                            new InlineKeyboardButton("домой") {CallbackData="home"}
                         }
                 }
                 );
-            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Здравствуйте, администратор!", replyMarkup: markup);
+            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Что будем делать?", replyMarkup: markup);
         }
-
     }
 }

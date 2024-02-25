@@ -85,11 +85,11 @@ public class AppointmentClient
 
 
 
-    public List<AppointmentsAdminOutputModel> GetAllAppointmentsAdminMap()
+    public List<WorkersAppOutputModel> GetAllAppointmentsAdminMap()
     {
         List<WorkersDTO> appDtos = _appRepository.GetAllAppointments();
 
-        var result = _mapper.Map<List<AppointmentsAdminOutputModel>>(appDtos);
+        var result = _mapper.Map<List<WorkersAppOutputModel>>(appDtos);
 
         return result;
     }

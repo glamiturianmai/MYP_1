@@ -14,5 +14,11 @@ namespace MYP_MassageSalon.DAL.Dtos
 
         public int IpInf { get; set; } 
         public string ServiceName { get; set; }
+
+        //public ServicesDTO? ServiceName { get; set; }
+
+        //public ClientsDTO? Username { get; set; }
+
+        public int? AppId { get; set; }
     }
 }

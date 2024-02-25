@@ -12,7 +12,7 @@ var a = r.GetAllAppointments();
 
 AppointmentClient q = new AppointmentClient();
 
-List<AppointmentsAdminOutputModel> m = new List<AppointmentsAdminOutputModel>();
+List<WorkersAppOutputModel> m = new List<WorkersAppOutputModel>();
 
 m = q.GetAllAppointmentsAdminMap();
 

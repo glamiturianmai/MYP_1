@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MYP_MassageSalon.BLL.Models.InputModels;
+using MYP_MassageSalon.BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,20 +9,17 @@ using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
 using Telegram.Bot.Types;
 using Telegram.Bot;
-using MYP_MassageSalon.BLL.Models.OutputModels;
-using MYP_MassageSalon.BLL;
-using MYP_MassageSalon.BLL.Models.InputModels;
 
-namespace MYP_MassageSalon.TG.States.ClientApplication
+namespace MYP_MassageSalon.TG.States.AdminApplication
 {
-    public class StateClientEditApp : AbstractState
+    public class AdminAppDeleteState : AbstractState
     {
         private int _appId;
         private AppointmentClient _appClient;
         private DeleteAppIntputModel _appTG;
 
-        
-        public StateClientEditApp(int appId)
+
+        public AdminAppDeleteState(int appId)
         {
             _appId = appId;
             _appClient = new AppointmentClient();
@@ -34,15 +33,15 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
         {
             if (update.Type == UpdateType.CallbackQuery)
             {
-                return new StateClientSetService();
+                return new AdminAppDoState();
             }
-            return this; 
+            return this;
         }
 
         public override void SendMessage(long chatId)
         {
 
-            _appClient.DeleteAppointmentMap(_appTG); // не работает 
+            _appClient.DeleteAppointmentMap(_appTG);
 
 
             InlineKeyboardMarkup markup = new InlineKeyboardMarkup(
@@ -50,13 +49,13 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
                    {
                         new InlineKeyboardButton[]
                         {
-                            new InlineKeyboardButton("Давайте") {CallbackData="SeeApps"}
+                            new InlineKeyboardButton("Спасибо!") {CallbackData="SeeApps"}
 
                         }
                    }
                    );
-            
-            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Давате изменим вашу заявку!", replyMarkup: markup);
+
+            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Эта запись удалена!", replyMarkup: markup);
         }
     }
 }

@@ -14,5 +14,7 @@ namespace MYP_MassageSalon.BLL.Models.OutputModels
 
         public int IpInf { get; set; }
         public string ServiceName { get; set; }
+
+        public int? AppId { get; set; }
     }
 }
