@@ -1,4 +1,7 @@
-﻿using MYP_MassageSalon.TG.States.AdminApplication;
+﻿using MYP_MassageSalon.BLL;
+using MYP_MassageSalon.BLL.Models.InputModels;
+using MYP_MassageSalon.BLL.Models.OutputModels;
+using MYP_MassageSalon.TG.States.AdminApplication;
 using MYP_MassageSalon.TG.States.ClientApplication;
 using MYP_MassageSalon.TG.States.MasterApplication;
 using MYP_MassageSalon.TG.TypaBLL;
@@ -16,10 +19,13 @@ namespace MYP_MassageSalon.TG.States
 {
     public class StartState : AbstractState
     {
-        private TypaData _clients;
+        private ClientClient _clients;
+        private List<IpInfOutputModel> _clientId;
+        private ClientInputModel _curClient;
 
         public StartState() { 
-            _clients = new TypaData();
+            _clients = new ClientClient();
+            _curClient = new ClientInputModel();
         }
 
         public override AbstractState ReceiveMessage(Update update)
@@ -37,8 +43,12 @@ namespace MYP_MassageSalon.TG.States
                 }
                 else
                 {
-                    //TODO: добавить проверку на наличие клиента в базе
-                    _clients.AddClient(update.Message.Chat.Id, update.Message.Text);
+                    if(_clientId.Count == 0)
+                    {
+                        _curClient.Username = message;
+                        _clients.AddClientMap(_curClient);
+                    }
+                    
                     return this;
                 }
                 
@@ -46,14 +56,12 @@ namespace MYP_MassageSalon.TG.States
             else if (update.Type == UpdateType.CallbackQuery)
             {
                 var message = update.CallbackQuery.Data;
-                //int clientId = Int32.Parse(update.CallbackQuery.Data); ; КОСТЫЛЬ ААААААААААААААААААА
-                int clientId = 2;
                 if (message == "SeeApps")
                 {
-                    return new StateClientSeeApp(clientId);
+                    return new StateClientSeeApp(_clientId[0].Id);
                 } else if (message == "SetApp")
                 {
-                    return new StateClientSetService();
+                    return new StateClientSetService(_clientId[0].Id);
                 }
             }
             return this;
@@ -61,9 +69,9 @@ namespace MYP_MassageSalon.TG.States
 
         public override void SendMessage(long chatId)
         {
-            Dictionary<long, string> clients = _clients.GetAllClients(); //костыль
+            _clientId = _clients.GetClientIdByIpInfMap((int)chatId);
 
-            if (clients.ContainsKey(chatId))
+            if (_clientId.Count != 0)
             {
                 InlineKeyboardMarkup markup = new InlineKeyboardMarkup(
                     new InlineKeyboardButton[][]
@@ -71,7 +79,7 @@ namespace MYP_MassageSalon.TG.States
                         new InlineKeyboardButton[]
                         {
                             new InlineKeyboardButton("Посмотреть свои записи") {CallbackData="SeeApps"}
-                            
+
                         },
                         new InlineKeyboardButton[]
                         {
@@ -79,9 +87,15 @@ namespace MYP_MassageSalon.TG.States
                         }
                     }
                     );
-                SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Здравствуйте, {clients[chatId]}!", replyMarkup: markup);
+                SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, 
+                    $"Здравствуйте, {_clientId[0].Username}!", replyMarkup: markup);
             }
-            else SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, "Здравствуйте! Как я могу к вам обращаться?");
+            else
+            {
+                _curClient.IpInf = (int)chatId;
+                SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId,
+                    "Здравствуйте! Как я могу к вам обращаться?");
+            }
         }
     }
 }

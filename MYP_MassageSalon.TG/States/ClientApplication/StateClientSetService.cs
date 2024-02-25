@@ -17,10 +17,13 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
     public class StateClientSetService : AbstractState
     {
         private List<ServiceOutputModel> _servicesTG;
+        private Appointment _app;
         
-        public StateClientSetService()
+        public StateClientSetService(int clientId)
         {
             _servicesTG = new ServiceClient().GetAllServicesNameMap();
+            _app = new Appointment();
+            _app.ClientId = clientId;
         }
 
         public override AbstractState ReceiveMessage(Update update)
@@ -34,7 +37,9 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
                 else
                 {
                     int serviceId = Int32.Parse(update.CallbackQuery.Data);
-                    return new StateClinetSetWorker(_servicesTG[serviceId].Id, _servicesTG[serviceId].Time);
+                    _app.ServiceId = _servicesTG[serviceId].Id;
+                    _app.ServiceDuration = _servicesTG[serviceId].Time;
+                    return new StateClinetSetWorker(_app);
                 }
                 
             }

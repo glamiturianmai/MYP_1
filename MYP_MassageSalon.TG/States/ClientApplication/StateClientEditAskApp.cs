@@ -16,10 +16,12 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
     public class StateClientEditAskApp : AbstractState
     {
         private int _appId;
-        public StateClientEditAskApp(int id)
+        private int _clientId;
+
+        public StateClientEditAskApp(int id, int clientId)
         {
             _appId = id;
-            
+            _clientId = clientId;
         }
 
 
@@ -35,11 +37,11 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
 
                 if (message == "ok")
                 {
-                    return new StateClientEditApp(appId);
+                    return new StateClientEditApp(appId, _clientId);
                 }
                 else if (message == "back")
                 {
-                    return new StateClientDoWithApp(appId);
+                    return new StateClientDoWithApp(appId, _clientId);
                 }
                 //return new StateClientDoWithApp(id);
             }

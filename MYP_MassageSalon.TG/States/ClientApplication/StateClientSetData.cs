@@ -9,19 +9,15 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
 {
     public class StateClientSetData : AbstractState
     {
-        private int _serviceId;
-        private int _workerId;
-        private int _serviceDuration;
+        Appointment _app;
 
         private Dictionary<string, List<IntervalsOutputModel>> _datesTG;
 
-        public StateClientSetData(int serviceID, int workerId, int serviceDuration)
+        public StateClientSetData(Appointment app)
         {
-            _serviceId = serviceID;
-            _workerId = workerId;
-            _serviceDuration = serviceDuration;
+            _app = app;
 
-            _datesTG = new WorkerClient().CheckOutIntervals(serviceDuration, _workerId);
+            _datesTG = new WorkerClient().CheckOutIntervals(_app.ServiceDuration, _app.WorkerId);            
         }
 
 
@@ -32,11 +28,11 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
                 string m = update.CallbackQuery.Data;
                 if (m == "/back")
                 {
-                    return new StateClinetSetWorker(_serviceId, _serviceDuration);
+                    return new StateClinetSetWorker(_app);
                 }
                 else
                 {
-                    return new StateClientSetTime(_serviceId, _workerId, _serviceDuration, _datesTG[m]);
+                    return new StateClientSetTime(_app, _datesTG[m]);
                 }
             }
             return this;

@@ -13,13 +13,12 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
     public class StateClientDeleteAskApp : AbstractState
     {
         private int _appId;
-        public StateClientDeleteAskApp(int id)
+        private int _clientId;
+        public StateClientDeleteAskApp(int id, int clientId)
         {
             _appId = id;
-
+            _clientId = clientId;
         }
-
-
 
         public override AbstractState ReceiveMessage(Update update)
         {
@@ -35,7 +34,7 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
                 }
                 else if (message == "back")
                 {
-                    return new StateClientDoWithApp(appId);
+                    return new StateClientDoWithApp(appId, _clientId);
                 }
                
             }

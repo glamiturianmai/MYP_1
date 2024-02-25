@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,14 +18,16 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
         private int _appId;
         private AppointmentClient _appClient;
         private DeleteAppIntputModel _appTG;
+        private int _clientId;
 
         
-        public StateClientEditApp(int appId)
+        public StateClientEditApp(int appId, int clientId)
         {
             _appId = appId;
             _appClient = new AppointmentClient();
             _appTG = new DeleteAppIntputModel();
-            _appTG.AppId = appId;
+            _appTG.Id = appId;
+            _clientId = clientId;
         }
 
 
@@ -34,7 +36,7 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
         {
             if (update.Type == UpdateType.CallbackQuery)
             {
-                return new StateClientSetService();
+                return new StateClientSetService(_clientId);
             }
             return this; 
         }

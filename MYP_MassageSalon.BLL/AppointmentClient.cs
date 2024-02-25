@@ -58,18 +58,23 @@ public class AppointmentClient
 
     private List<ClientAppPrOutputModel> GetClientsAppointmentsMapSortedSecond(List<AppointmentsOutputModel> a)
     {
-        var apps = a[0].WorksApp;
-        int lengthinterval = 15;
-
-        var timestart = apps[0].Date.TimeOfDay; //
-
         List<ClientAppPrOutputModel> list1 = new List<ClientAppPrOutputModel>();
-        for (int i = 0; i < apps.Count; i++)
+
+        if (a.Count != 0)
         {
-            var n = apps[i].Duration / lengthinterval;
-            list1.Add(apps[i]);
-            i += n - 1;
-            list1.Add(apps[i]);
+            var apps = a[0].WorksApp;
+            int lengthinterval = 15;
+
+            var timestart = apps[0].Date.TimeOfDay; //
+
+
+            for (int i = 0; i < apps.Count; i++)
+            {
+                var n = apps[i].Duration / lengthinterval;
+                list1.Add(apps[i]);
+                i += n - 1;
+                list1.Add(apps[i]);
+            }
         }
 
         return list1;
@@ -117,7 +122,7 @@ public class AppointmentClient
 
     public int intervalDuration = 15;
     public void SetAppointment(int clientId, int serviceId, int workerId, 
-                                int serviceDuration, int intervalId, int price)
+                                int serviceDuration, int intervalId, decimal price)
     {
         var a = new AddAppClientIntputModel
         {
@@ -127,10 +132,11 @@ public class AppointmentClient
 
         var serviceInApp = new AddAppIntputModel
         {
-            ServicesId = serviceId,
+            ServiceId = serviceId,
             WorkerId = workerId,
-            AppointmentId = appId,
-            Price = price,
+            AppId = appId,
+            ServicePrice = price,
+            ClientId = clientId
         };
         AddService_AppointmentMap(serviceInApp);
 
