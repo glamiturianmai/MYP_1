@@ -35,7 +35,12 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 //q.AddService_AppointmentMap(m);
 
-List<WorkersDTO> workDtos = new WorkersRepository().GetWorkersByServiceId(3);
-List<WorkersOutputModel> l = new WorkerClient().GetWorkersByServiceIdMap(3);
+//List<WorkersDTO> workDtos = new WorkersRepository().GetWorkersByServiceId(3);
+//List<WorkersOutputModel> l = new WorkerClient().GetWorkersByServiceIdMap(3);
+
+ClientClient c = new ClientClient();
+List<IpInfOutputModel> l = c.GetClientIdByIpInfMap(2);
+
+if (l.Count == 0) Console.WriteLine(5);
 
 Console.ReadLine();

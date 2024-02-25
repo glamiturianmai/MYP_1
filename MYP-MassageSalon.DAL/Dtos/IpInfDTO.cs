@@ -9,6 +9,9 @@ namespace MYP_MassageSalon.DAL.Dtos
     public class IpInfDTO
     {
         public int? Id { get; set; }
+
         public int IpInf { get; set; }
+
+        public string? Username { get; set; }
     }
 }
