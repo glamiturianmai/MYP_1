@@ -12,7 +12,7 @@ namespace MYP_MassageSalon.TG
         {
             get
             {
-                return "6602031826:AAEEnjfIAw4FhRWLEIl_YNp3362UWTE1n54";
+                return Environment.GetEnvironmentVariable("TG_Bot_MYP");
             }
         }
     }

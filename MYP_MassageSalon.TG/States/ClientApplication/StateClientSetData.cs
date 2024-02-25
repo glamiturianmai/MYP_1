@@ -1,11 +1,6 @@
 ﻿using MYP_MassageSalon.BLL;
 using MYP_MassageSalon.BLL.Models.OutputModels;
-using MYP_MassageSalon.DAL.Dtos;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
@@ -34,13 +29,14 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
         {
             if (update.Type == UpdateType.CallbackQuery)
             {
-                if (update.CallbackQuery.Data == "/back")
+                string m = update.CallbackQuery.Data;
+                if (m == "/back")
                 {
                     return new StateClinetSetWorker(_serviceId, _serviceDuration);
                 }
                 else
                 {
-                    return this;
+                    return new StateClientSetTime(_serviceId, _workerId, _serviceDuration, _datesTG[m]);
                 }
             }
             return this;
@@ -53,7 +49,7 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
             int count = 0;
             foreach (var d in _datesTG)
             {
-                keys.Add(new List<InlineKeyboardButton>());
+                if (count % 3 == 0) keys.Add(new List<InlineKeyboardButton>());
                 keys[keys.Count - 1].Add(new InlineKeyboardButton($"{d.Key}")
                     { CallbackData = d.Key }
                 );
@@ -63,6 +59,10 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
             {
                 new InlineKeyboardButton("Вернуться к выбору мастера ->") { CallbackData = "/back"}
             });
+
+            InlineKeyboardMarkup markup = new InlineKeyboardMarkup(keys);
+
+            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Выберите дату", replyMarkup: markup);
         }
     }
 }

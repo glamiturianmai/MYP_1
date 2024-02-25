@@ -34,7 +34,7 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
                 else
                 {
                     int serviceId = Int32.Parse(update.CallbackQuery.Data);
-                    return new StateClinetSetWorker(serviceId, _servicesTG[serviceId].Time);
+                    return new StateClinetSetWorker(_servicesTG[serviceId].Id, _servicesTG[serviceId].Time);
                 }
                 
             }
@@ -46,11 +46,12 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
             List<List<InlineKeyboardButton>> keys = new List<List<InlineKeyboardButton>>();
 
             int count = 0;
-            foreach (var s in _servicesTG)
+            for (int i = 0; i < _servicesTG.Count; i++)
             {
+                var s = _servicesTG[i];
                 keys.Add(new List<InlineKeyboardButton>());
                 keys[keys.Count - 1].Add(new InlineKeyboardButton($"{s.Name}, {s.Time} минут") 
-                    { CallbackData = s.Id.ToString()}
+                    { CallbackData = i.ToString()}
                 );
                 count++;
             }
@@ -61,7 +62,9 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
 
             InlineKeyboardMarkup markup = new InlineKeyboardMarkup(keys);
 
-            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Выберите услугу", replyMarkup: markup);
+            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(
+                chatId, $"Выберите услугу", replyMarkup: markup
+                );
         }
     }
 }

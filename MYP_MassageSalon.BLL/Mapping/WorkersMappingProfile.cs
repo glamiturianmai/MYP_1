@@ -31,6 +31,7 @@ namespace MYP_MassageSalon.BLL.Mapping
             CreateMap<WorkersAddInputModel, WorkersDTO>();
 
             CreateMap<IntervalIntputModel, IntervalPrDTO>();
+            CreateMap<WorkersDTO, WorkersModel>();
         }
     }
 }

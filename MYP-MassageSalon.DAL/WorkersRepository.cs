@@ -1,4 +1,4 @@
-﻿using Dapper;
+using Dapper;
 using Microsoft.Data.SqlClient;
 using MYP_MassageSalon.DAL.Dtos;
 using MYP_MassageSalon.DAL.IRepositories;
@@ -133,12 +133,12 @@ namespace MYP_MassageSalon.DAL
                 {
                     Id = Id1
                 };
-                return connection.Query<WorkersDTO, QualificationDTO, WorkersDTO>(
+                return connection.Query<WorkersDTO, WorkServDTO, WorkersDTO>(
                     WorkersStoredProcedures.GetWorkersByServiceId,
                     (worker, qual) =>
                     {
 
-                        worker.QualificationName.Add(qual);
+                        worker.WorkServ.Add(qual);
                         return worker;
 
                     },
@@ -207,6 +207,14 @@ namespace MYP_MassageSalon.DAL
                 connection.Query(WorkersStoredProcedures.AddNewWorker,
                     new { client.Name, client.QualificationId },
                     commandType: CommandType.StoredProcedure);
+            }
+        }
+
+        public List<WorkersDTO> GetWorkerNameById(int id1)
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                return connection.Query<WorkersDTO>(WorkersStoredProcedures.GetWorkerNameById).ToList();
             }
         }
     }
