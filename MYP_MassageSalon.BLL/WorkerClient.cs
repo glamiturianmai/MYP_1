@@ -120,5 +120,6 @@ namespace MYP_MassageSalon.BLL
             this._intRepository.SetScheduleInterval(workMod);
 
         }
+
     }
 }
