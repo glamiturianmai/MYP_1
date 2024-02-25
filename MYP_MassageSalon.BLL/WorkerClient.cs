@@ -71,6 +71,10 @@ namespace MYP_MassageSalon.BLL
                     if (dates[i].Id + count - 1 == dates[end_ind].Id
                         && day1.Equals(day2))
                     {
+                        if (!intervals.ContainsKey(day1))
+                        {
+                            intervals.Add(day1, new List<IntervalsOutputModel>());
+                        }
                         intervals[day1].Add(dates[i]);
                     }
                 }

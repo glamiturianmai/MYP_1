@@ -48,7 +48,9 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
             {
                 keys.Add(new List<InlineKeyboardButton>());
                 Console.WriteLine(keys.Count - 1);
-                keys[keys.Count - 1].Add(new InlineKeyboardButton($"{w.Name}, {w.WorkServ[0].QualificationName}, {w.WorkServ[0].Price} рублей") 
+                keys[keys.Count - 1].Add(new InlineKeyboardButton(
+                    $"{w.Name}, {w.WorkServ[0].QualificationName}, {w.WorkServ[0].Price} рублей"
+                    ) 
                     { CallbackData = w.Id.ToString() }
                 ); 
                 count++;

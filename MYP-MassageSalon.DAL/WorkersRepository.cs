@@ -133,12 +133,12 @@ namespace MYP_MassageSalon.DAL
                 {
                     Id = Id1
                 };
-                return connection.Query<WorkersDTO, QualificationDTO, WorkersDTO>(
+                return connection.Query<WorkersDTO, WorkServDTO, WorkersDTO>(
                     WorkersStoredProcedures.GetWorkersByServiceId,
                     (worker, qual) =>
                     {
 
-                        worker.QualificationName.Add(qual);
+                        worker.WorkServ.Add(qual);
                         return worker;
 
                     },

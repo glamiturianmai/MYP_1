@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
@@ -53,7 +54,7 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
             int count = 0;
             foreach (var d in _datesTG)
             {
-                keys.Add(new List<InlineKeyboardButton>());
+                if (count % 3 == 0) keys.Add(new List<InlineKeyboardButton>());
                 keys[keys.Count - 1].Add(new InlineKeyboardButton($"{d.Key}")
                     { CallbackData = d.Key }
                 );
@@ -63,6 +64,10 @@ namespace MYP_MassageSalon.TG.States.ClientApplication
             {
                 new InlineKeyboardButton("Вернуться к выбору мастера ->") { CallbackData = "/back"}
             });
+
+            InlineKeyboardMarkup markup = new InlineKeyboardMarkup(keys);
+
+            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Выберите дату", replyMarkup: markup);
         }
     }
 }
