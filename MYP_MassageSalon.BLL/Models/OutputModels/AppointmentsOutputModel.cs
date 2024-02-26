@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace MYP_MassageSalon.BLL.Models.OutputModels
 {
-    public class AppointmentsOutputModel
+    public class AppointmentsOutputModel //было
     {
         public int Id { get; set; }
-        public List<ClientAppPrOutputModel>? WorksApp { get; set; }
+        public List<ClientAppPrOutputModel> WorksApp { get; set; }
     }
 }

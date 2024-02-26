@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MYP_MassageSalon.DAL.Dtos
 {
-    public class ClientAppPrDTO
+    public class ClientAppPrDTO //было 
     {
         public int AppId { get; set; }
         public int IntervalId { get; set; }

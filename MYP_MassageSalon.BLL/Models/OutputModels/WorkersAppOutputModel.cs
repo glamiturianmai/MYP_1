@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MYP_MassageSalon.BLL.Models.OutputModels
 {
-    public class WorkersAppOutputModel
+    public class WorkersAppOutputModel //стало 1 
     {
         public int Id { get; set; }
 

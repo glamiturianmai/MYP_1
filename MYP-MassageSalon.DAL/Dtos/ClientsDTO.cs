@@ -20,6 +20,6 @@ namespace MYP_MassageSalon.DAL.Dtos
 
         public bool IsDeleted { get; set; }
 
-        public List<ClientAppPrDTO>? ClientApp { get; set; }
+        public List<ClientAppPrDTO>? ClientApp { get; set; } //аа
     }
 }

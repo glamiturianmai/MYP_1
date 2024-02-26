@@ -80,6 +80,34 @@ namespace MYP_MassageSalon.DAL
                     ).ToList();
             }
         }
+
+        public List<ClientsDTO> GetAllApps() //заявки id мастера - много табличек   
+        {
+            using (IDbConnection connection = new SqlConnection(Options.ConStr))
+            {
+                Dictionary<int, ClientsDTO> apps = new Dictionary<int, ClientsDTO>();
+                
+
+                return connection.Query<ClientsDTO, ClientAppPrDTO, ClientsDTO>(
+                    AppointmentStoredProcedures.GetAllApps,
+                    (client, clientapp) =>
+                    {
+                        if (!apps.ContainsKey(client.Id))
+                        {
+                            apps.Add((client.Id), client);
+                        }
+
+                        ClientsDTO crntShop = apps[client.Id];
+
+                        crntShop.ClientApp.Add(clientapp);
+
+                        return crntShop;
+                    },
+                    splitOn: "AppId",
+                    commandType: CommandType.StoredProcedure
+                    ).ToList();
+            }
+        }
     }
 }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MYP_MassageSalon.BLL.Models.OutputModels
 {
-    public class WorkerAppointmentsOutputModel
+    public class WorkerAppointmentsOutputModel //стало внутри 
     {
         public DateTime Date { get; set; }
 
@@ -15,6 +15,13 @@ namespace MYP_MassageSalon.BLL.Models.OutputModels
         public int IpInf { get; set; }
         public string ServiceName { get; set; }
 
-        public int? AppId { get; set; }
+        public string WorkerName { get; set; }
+
+        public int AppId { get; set; } 
+
+        public decimal Price { get; set; }
+
+        public int Duration { get; set; }
+
     }
 }

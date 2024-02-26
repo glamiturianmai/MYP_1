@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MYP_MassageSalon.BLL.Models.OutputModels
 {
-    public class ClientAppPrOutputModel
+    public class ClientAppPrOutputModel //было внутри 
     {
         public int AppId { get; set; }
 

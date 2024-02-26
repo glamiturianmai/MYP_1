@@ -8,6 +8,8 @@ namespace MYP_MassageSalon.DAL.Dtos
 {
     public class WorkerAppointmentsDTO 
     {
+
+
         public DateTime Date { get; set; } 
 
         public string Username { get; set; } //клиента
@@ -19,6 +21,14 @@ namespace MYP_MassageSalon.DAL.Dtos
 
         //public ClientsDTO? Username { get; set; }
 
-        public int? AppId { get; set; }
+        public int AppId { get; set; }
+
+        public int IntervalId { get; set; }
+
+        public string WorkerName { get; set; }
+
+        public decimal Price { get; set; }
+
+        public int Duration { get; set; }
     }
 }

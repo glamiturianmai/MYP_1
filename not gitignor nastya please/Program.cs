@@ -19,11 +19,21 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 //var a = r.GetAllAppointments();
 
-AppointmentClient q = new AppointmentClient();
+//AppointmentClient q = new AppointmentClient();
 
-DeleteAppIntputModel m = new DeleteAppIntputModel();
-m.Id = 3;
-q.DeleteAppointmentMap(m);
+//var e = q.GetClientsAppointmentsMap(4);
+
+//var r1 = q.GetAllAppsMap();
+
+AppointmentnRepository q1 = new AppointmentnRepository();
+ClientRepository q2 = new ClientRepository();
+
+var e2 = q2.GetClientsAppointments(4);
+
+var r12 = q1.GetAllApps();
+
+
+
 //
 //DateTime date1 = new DateTime(2024, 2, 23, 19, 45, 00);
 //dto.ServicePrice=1234;

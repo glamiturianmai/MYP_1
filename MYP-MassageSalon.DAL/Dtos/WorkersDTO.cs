@@ -32,7 +32,7 @@ namespace MYP_MassageSalon.DAL.Dtos
         public int? WorkIntervalId { get; set; }
 
         public List<QualificationDTO>? QualificationName { get; set; }
-        public List<WorkerAppointmentsDTO>? WorksApp { get; set; }
+        public List<WorkerAppointmentsDTO>? WorksApp { get; set; } //аа
 
         public List<WorkersServiceDTO>? ServiceWork { get; set; }
 
