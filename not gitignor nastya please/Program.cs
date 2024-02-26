@@ -11,19 +11,19 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 ///
 
 
-AppointmentDTO dto = new AppointmentDTO();
-AppointmentnRepository r = new AppointmentnRepository();
-dto.Id = 1;
-r.DeleteAppointment(dto);
+//AppointmentDTO dto = new AppointmentDTO();
+//AppointmentnRepository r = new AppointmentnRepository();
+//dto.Id = 1;
+//r.DeleteAppointment(dto);
 
 
-var a = r.GetAllAppointments();
+//var a = r.GetAllAppointments();
 
 AppointmentClient q = new AppointmentClient();
 
-List<WorkersAppOutputModel> m = new List<WorkersAppOutputModel>();
-
-m = q.GetAllAppointmentsAdminMap();
+DeleteAppIntputModel m = new DeleteAppIntputModel();
+m.Id = 3;
+q.DeleteAppointmentMap(m);
 //
 //DateTime date1 = new DateTime(2024, 2, 23, 19, 45, 00);
 //dto.ServicePrice=1234;
