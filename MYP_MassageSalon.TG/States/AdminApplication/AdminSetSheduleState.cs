@@ -14,36 +14,39 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
 {
     public class AdminSetSheduleState : AbstractState
     {
-        
+        private List<WorkersAllOutputModel> _workTG;
+
         public AdminSetSheduleState()
         {
-            
+            _workTG = new WorkerClient().GetAllWorkerMap();
         }
 
         public override AbstractState ReceiveMessage(Update update)
         {
             if (update.Type == UpdateType.CallbackQuery)
             {
-                
-                return this;
+                int workId = Int32.Parse(update.CallbackQuery.Data);
+                return new AdminSetWorkerSchedule(workId);
             }
             return this;
         }
 
         public override void SendMessage(long chatId)
         {
-            InlineKeyboardMarkup markup = new InlineKeyboardMarkup(
-                 new InlineKeyboardButton[][]
-                 {
-                        new InlineKeyboardButton[]
-                        {
-                            new InlineKeyboardButton("КНОПКА") {CallbackData="knopka"}
+            List<List<InlineKeyboardButton>> keys = new List<List<InlineKeyboardButton>>();
 
-                        }
-                        
-                 }
-                 );
-            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Здравствуйте, Настя!", replyMarkup: markup);
+            for (var i = 0; i < _workTG.Count; i++)
+            {
+                keys.Add(new List<InlineKeyboardButton>());
+                {
+                    keys[keys.Count - 1].Add(new InlineKeyboardButton($"{_workTG[i].Name}")
+                    { CallbackData = _workTG[i].Id.ToString() });
+                }
+            }
+
+            InlineKeyboardMarkup markup = new InlineKeyboardMarkup(keys);
+
+            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Выберите мастера:", replyMarkup: markup);
         }
     }
 }

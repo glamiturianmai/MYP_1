@@ -9,7 +9,9 @@ namespace MYP_MassageSalon.BLL
 {
     public class WorkerClient
     {
-        private int intervalDuration = 15;
+        private int _intervalDuration = 15;
+        private int _shiftStart = 9;
+        private int _shiftEnd = 22;
 
         private WorkersRepository _workRepository;
         private ScheduleIntervalRepository _intRepository;
@@ -59,7 +61,7 @@ namespace MYP_MassageSalon.BLL
             Dictionary<string, List<IntervalsOutputModel>> intervals =
                 new Dictionary<string, List<IntervalsOutputModel>>();
 
-            int count = serviceDuration / intervalDuration;
+            int count = serviceDuration / _intervalDuration;
             for (int i = 0; i < dates.Count; i++)
             {
                 int end_ind = i + count - 1;
@@ -141,5 +143,30 @@ namespace MYP_MassageSalon.BLL
             return result;
         }
 
+        public void SetSchedule(string date1, int workerId)
+        {
+            string[] dateParts = date1.Split('-');
+            DateTime date = new DateTime(Int32.Parse(dateParts[0]), Int32.Parse(dateParts[1]), Int32.Parse(dateParts[2]), 00, 00, 00);
+
+            IntervalIntputModel im = new IntervalIntputModel { WorkerId = workerId };
+            int addHours = _shiftStart;
+            int addMinutes = 0;
+            date = date.AddHours(addHours);
+
+            while ((addHours != _shiftEnd - 1) || (addMinutes != 60 - _intervalDuration))
+            {
+                date = date.AddMinutes(_intervalDuration);
+
+                im.Date = date;
+                SetScheduleIntervalMap(im);
+
+                addMinutes += _intervalDuration;
+                if (addMinutes == 60)
+                {
+                    addMinutes = 0;
+                    addHours += 1;
+                }
+            }
+        }
     }
 }
