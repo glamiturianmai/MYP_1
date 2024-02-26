@@ -1,5 +1,6 @@
 ﻿using MYP_MassageSalon.BLL;
 using MYP_MassageSalon.BLL.Models.OutputModels;
+using MYP_MassageSalon.TG.States.ClientApplication;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
@@ -19,10 +20,19 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
         {
             if (update.Type == UpdateType.CallbackQuery)
             {
-                int workId = Int32.Parse(update.CallbackQuery.Data);
-                return new AdminWorkerChooseState(workId);
+                string m = update.CallbackQuery.Data;
+                if (m == "/back")
+                {
+                    return new StartState();
+                }
+                else
+                {
+                    int workId = Int32.Parse(update.CallbackQuery.Data);
+                    return new AdminWorkerChooseState(workId);
+                }
             }
             return this;
+           
         }
 
         public override void SendMessage(long chatId)
@@ -38,7 +48,10 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                 }
 
             }
-
+            keys.Add(new List<InlineKeyboardButton>()
+            {
+                new InlineKeyboardButton("Вернуться в главное меню ->") { CallbackData = "/back"}
+            }); 
             InlineKeyboardMarkup markup = new InlineKeyboardMarkup(keys);
 
             SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Выберите мастера (Имя мастера, квалификация, процент):", replyMarkup: markup);
