@@ -51,7 +51,7 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                 {
                         new InlineKeyboardButton[]
                         {
-                            new InlineKeyboardButton("Наши заявки") {CallbackData="see"}
+                            new InlineKeyboardButton("Наши записи") {CallbackData="see"}
 
                         },
                         new InlineKeyboardButton[]

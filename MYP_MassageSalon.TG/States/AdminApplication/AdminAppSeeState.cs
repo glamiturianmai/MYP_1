@@ -14,11 +14,11 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
 {
     public class AdminAppSeeState : AbstractState //вывод всех услуг
     {
-        private List<WorkersAppOutputModel> _appTG;
+        private List<ClientAppPrOutputModel> _appTG;
         public AdminAppSeeState()
         {
-            _appTG = new List<WorkersAppOutputModel>();
-            _appTG = new AppointmentClient().GetAllAppointmentsAdminMap();
+            _appTG = new List<ClientAppPrOutputModel>();
+            _appTG = new AppointmentClient().GetPleaseApp();
         }
 
         public override AbstractState ReceiveMessage(Update update)
@@ -38,11 +38,11 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
             for (var i = 0; i < _appTG.Count; i++)
             {
                 keys.Add(new List<InlineKeyboardButton>());
+                if (i % 2 == 0)
                 {
-                    keys[keys.Count - 1].Add(new InlineKeyboardButton($" Клиент {_appTG[i].WorksApp[0].ServiceName}, {_appTG[i].WorksApp[0].Date}")
-                    { CallbackData = _appTG[i].WorksApp[0].AppId.ToString() });
+                    keys[keys.Count - 1].Add(new InlineKeyboardButton($"{_appTG[i].WorkerName}, {_appTG[i].ServiceName}, {_appTG[i].Date.DayOfYear}, {_appTG[i].Date.TimeOfDay}-{_appTG[i + 1].Date.AddMinutes(15).TimeOfDay}, {_appTG[i].Price} руб.")
+                    { CallbackData = _appTG[i].AppId.ToString() });
                 }
-
             }
 
             InlineKeyboardMarkup markup = new InlineKeyboardMarkup(keys);

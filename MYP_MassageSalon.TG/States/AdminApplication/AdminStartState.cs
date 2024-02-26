@@ -37,6 +37,10 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                 {
                     return new AdminSetSheduleState();
                 }
+                else if (message == "clients")
+                {
+                    return new AdminSeeClientState();
+                }
                 else return this;
 
             }
@@ -55,6 +59,11 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                         new InlineKeyboardButton[]
                         {
                             new InlineKeyboardButton("Мастера") {CallbackData="workers"}
+
+                        },
+                        new InlineKeyboardButton[]
+                        {
+                            new InlineKeyboardButton("Клиенты") {CallbackData="clients"}
 
                         },
                         new InlineKeyboardButton[]

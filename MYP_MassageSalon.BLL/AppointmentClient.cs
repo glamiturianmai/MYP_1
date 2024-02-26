@@ -163,4 +163,50 @@ public class AppointmentClient
 
         return result;
     }
+
+
+    public List<AppointmentsOutputModel> GetAllAppsMap() 
+    {
+        List<ClientsDTO> appDtos = _appRepository.GetAllApps();
+
+        var result = _mapper.Map<List<AppointmentsOutputModel>>(appDtos);
+
+        return result;
+    }
+
+
+
+    private List<ClientAppPrOutputModel> GetAllAppsMapSortedSecond(List<AppointmentsOutputModel> a) 
+    {
+        List<ClientAppPrOutputModel> list1 = new List<ClientAppPrOutputModel>();
+
+        if (a.Count != 0)
+        {
+            var apps = a[0].WorksApp;
+            int lengthinterval = 15;
+
+            var timestart = apps[0].Date.TimeOfDay; //
+
+
+            for (int i = 0; i < apps.Count; i++)
+            {
+                var n = apps[i].Duration / lengthinterval;
+                list1.Add(apps[i]);
+                i += n - 1;
+                list1.Add(apps[i]);
+            }
+        }
+
+        return list1;
+
+    }
+
+
+    public List<ClientAppPrOutputModel> GetPleaseApp() //new
+    {
+        var a = GetAllAppsMap();
+        var b = GetAllAppsMapSortedSecond(a);
+        return b;
+    }
+
 }

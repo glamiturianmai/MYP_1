@@ -12,12 +12,12 @@ using Telegram.Bot;
 
 namespace MYP_MassageSalon.TG.States.AdminApplication
 {
-    public class AdminServiceSeeState : AbstractState //вывод всех услуг
+    public class AdminSeeClientState : AbstractState //вывод всех услуг
     {
-        private List<ServiceAdminOutputModel> _servTG;
-        public AdminServiceSeeState()
+        private List<ClientOutputModel> _clientTG;
+        public AdminSeeClientState()
         {
-            _servTG = new ServiceClient().GetAllServicesMap();
+            _clientTG = new ClientClient().GetAllClientsMap();
         }
 
         public override AbstractState ReceiveMessage(Update update)
@@ -25,7 +25,7 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
             if (update.Type == UpdateType.CallbackQuery)
             {
                 int workId = Int32.Parse(update.CallbackQuery.Data);
-                return new AdminServiceChooseState(workId);
+                return new AdminStartState();
             }
             return this;
         }
@@ -34,19 +34,19 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
         {
             List<List<InlineKeyboardButton>> keys = new List<List<InlineKeyboardButton>>();
 
-            for (var i = 0; i < _servTG.Count; i++)
+            for (var i = 0; i < _clientTG.Count; i++)
             {
                 keys.Add(new List<InlineKeyboardButton>());
                 {
-                    keys[keys.Count - 1].Add(new InlineKeyboardButton($" Услуга {_servTG[i].Name}, {_servTG[i].Price} руб., {_servTG[i].Time} минут")
-                    { CallbackData = _servTG[i].Id.ToString() });
+                    keys[keys.Count - 1].Add(new InlineKeyboardButton($" Клиент {_clientTG[i].Username}, {_clientTG[i].IPInf}")
+                    { CallbackData = _clientTG[i].Id.ToString() });
                 }
 
             }
 
             InlineKeyboardMarkup markup = new InlineKeyboardMarkup(keys);
 
-            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Выберите услугу (Название, цена, продолжительность):", replyMarkup: markup);
+            SingletoneStorage.GetStorage().Client.SendTextMessageAsync(chatId, $"Это все клиенты нашего салона:", replyMarkup: markup);
         }
     }
 }
