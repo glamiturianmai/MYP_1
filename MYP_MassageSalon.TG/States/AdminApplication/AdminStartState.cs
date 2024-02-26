@@ -67,7 +67,7 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                         },
                         new InlineKeyboardButton[]
                         {
-                            new InlineKeyboardButton("ДЛЯ НАСТИ") {CallbackData="sheduleinterval"}
+                            new InlineKeyboardButton("Редактировать расписание") {CallbackData="sheduleinterval"}
                         }
                 }
                 );
