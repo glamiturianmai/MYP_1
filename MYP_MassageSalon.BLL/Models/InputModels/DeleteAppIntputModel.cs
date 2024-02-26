@@ -8,6 +8,6 @@ namespace MYP_MassageSalon.BLL.Models.InputModels
 {
     public class DeleteAppIntputModel
     {
-        public int AppId { get; set; }
+        public int Id { get; set; }
     }
 }
