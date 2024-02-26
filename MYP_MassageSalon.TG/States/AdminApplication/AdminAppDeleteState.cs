@@ -24,7 +24,7 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
             _appId = appId;
             _appClient = new AppointmentClient();
             _appTG = new DeleteAppIntputModel();
-            _appTG.AppId = appId;
+            _appTG.Id = appId;
         }
 
 
