@@ -9,6 +9,7 @@ using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
 using Telegram.Bot.Types;
 using Telegram.Bot;
+using MYP_MassageSalon.TG.States.ClientApplication;
 
 namespace MYP_MassageSalon.TG.States.AdminApplication
 {
@@ -22,12 +23,21 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
 
         public override AbstractState ReceiveMessage(Update update)
         {
-            if (update.Type == UpdateType.CallbackQuery)
+            f(update.Type == UpdateType.CallbackQuery)
             {
-                int workId = Int32.Parse(update.CallbackQuery.Data);
-                return new AdminStartState();
+                string m = update.CallbackQuery.Data;
+                if (m == "/back")
+                {
+                    return new StartState();
+                }
+                else
+                {
+                    int workId = Int32.Parse(update.CallbackQuery.Data);
+                    return new AdminStartState();
+                }
             }
             return this;
+            
         }
 
         public override void SendMessage(long chatId)
@@ -43,6 +53,10 @@ namespace MYP_MassageSalon.TG.States.AdminApplication
                 }
 
             }
+            keys.Add(new List<InlineKeyboardButton>()
+            {
+                new InlineKeyboardButton("Вернуться в главное меню ->") { CallbackData = "/back"}
+            });
 
             InlineKeyboardMarkup markup = new InlineKeyboardMarkup(keys);
 
